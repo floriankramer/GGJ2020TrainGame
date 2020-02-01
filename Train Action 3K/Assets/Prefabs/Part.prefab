@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &585479906006606363
@@ -96,12 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partType: 0
+  repairedBy: 
   partSprites:
   - {fileID: 21300000, guid: 992192bf767a02548a121cdc1c31a776, type: 3}
   - {fileID: 21300000, guid: 8b920217cc3e04d478d146b07d6f390c, type: 3}
   - {fileID: 21300000, guid: af85835449721f3489b5492f69734afd, type: 3}
   - {fileID: 21300000, guid: 7847ec5222f117f4c9295c918ed78e61, type: 3}
   health: 100
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7728805105435321819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346e583e64bcc747a2681b41ce11ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 10.1
+  damagePerSecond: 10
 --- !u!198 &7394547463034895325
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -131,7 +135,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 0

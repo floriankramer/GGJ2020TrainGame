@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Part : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Part : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private ParticleSystem particleSystem;
 
+    public UnityEvent onDeathEvent;
+
     public float Health
     {
         get
@@ -25,6 +28,7 @@ public class Part : MonoBehaviour
         }
         set
         {
+            bool died = health > 0 && value <= 0;
             value = Mathf.Max(value, 0);
 
             int oldPartIndex = (int)Mathf.Ceil(this.health /  (100 / 3));
@@ -35,6 +39,9 @@ public class Part : MonoBehaviour
                 particleSystem.Play();
             }
             spriteRenderer.sprite = partSprites[partIndex];
+            if (died) {
+                onDeathEvent.Invoke();
+            }
         }
     }
 

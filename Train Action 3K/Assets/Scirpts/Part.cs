@@ -29,7 +29,7 @@ public class Part : MonoBehaviour
         set
         {
             bool died = health > 0 && value <= 0;
-            value = Mathf.Max(value, 0);
+            value = Mathf.Min(100, Mathf.Max(value, 0));
 
             int oldPartIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));
             // TODO: Check if health is 0.0f and start a fancy explosion animation!
@@ -60,9 +60,17 @@ public class Part : MonoBehaviour
     }
 
     public bool Repair(ItemType type, float amount) {
-        repairedBy.Add(type);
         if (Health > 0 && repairedBy.Contains(type)) {
             Health += amount;
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanRepair(ItemType type)
+    {
+        if (Health > 0 && repairedBy.Contains(type) && Health < 100)
+        {
             return true;
         }
         return false;

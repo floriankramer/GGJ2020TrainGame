@@ -5,130 +5,104 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
     public ItemType itemType = ItemType.Wood;
-
-    [SerializeField]
-    [Range(0.0f, 100.0f)]
-    public float health = 100.0f;
-
-    private BoxCollider2D boxCollider;
-    public Vector2 originPosition;
-    private bool isStored = false;
-    private bool isInBackground = true;
-    private bool latchSetLocalPositionAgain = false;
+    bool following = false;
+    bool isCollected = false;
+    float counter = 2f;
+    float maxCounter = 2f;
+    float repairValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        originPosition = transform.position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (isStored && !latchSetLocalPositionAgain) {
-            transform.localPosition = new Vector2(0, 0);
-            latchSetLocalPositionAgain = true;
-        }
-
-        if (!isStored && transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect * 2.2)
+        if (Input.GetMouseButton(0) && following)
         {
-            Destroy(gameObject);
+            // Move it with the Mouse
+            transform.position = GetWorldPositionFromMouse();
+
+            Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
+            Debug.Log("found parts: " + hits.Length);
+
+            bool foundPart = false;
+            foreach (Collider2D hit in hits)
+            {
+                Part colPart = hit.gameObject.GetComponent<Part>();
+                if (colPart != null)
+                {
+                    Debug.Log("Found a part");
+                    if (colPart.CanRepair(itemType))
+                    {
+                        Debug.Log("Repairing" + counter);
+                        counter -= Time.deltaTime;
+                        foundPart = true;
+                        if (counter < 0)
+                        {
+                            colPart.Repair(itemType, 100);
+                            Destroy(gameObject);
+                        }
+                        break;
+                    }
+                }
+
+            }
+            if (!foundPart)
+            {
+                counter = maxCounter;
+            }
+
         }
     }
 
-    private void SyncSpeedWithTrain(Vector2 backgroundPosition)
+    // If the Mouse is above this Object
+    void OnMouseOver()
     {
-        transform.position = backgroundPosition;
-    }
-
-    public void Consume(float amount)
-    {
-        health -= amount;
-        if (health <= 0)
+        // and it is clicked
+        if (Input.GetMouseButtonDown(0))
         {
-            Destroy(gameObject);
-        }
-    }
+            // Start following the mouse
+            following = true;
 
-    void OnMouseDown()
-    {
-        isInBackground = false;
-        latchSetLocalPositionAgain = false;
-        if (isStored)
+        }
+
+        if (Input.GetMouseButtonUp(0))
         {
-            transform.SetParent(null);
-            //originPosition = transform.parent.position;
-        }
-        else
-        {
-            originPosition = transform.position;
+            following = false;
+
+            Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
+
+            foreach (Collider2D hit in hits)
+            {
+                if (hit.gameObject.tag == "StorageRoom")
+                {
+                    if (hit.transform.childCount == 0)
+                    {
+                        transform.parent = hit.transform;
+                        isCollected = true;
+                    }
+                }
+            }
+            if (isCollected)
+            {
+                transform.localPosition = new Vector3(0, 0, 0);
+            }
+
         }
     }
 
-    void OnMouseDrag()
-    {
-        transform.position = GetWorldPositionFromMouse();
-    }
-
-    void OnMouseUp()
-    {
-        Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
-
-        foreach (Collider2D hit in hits)
-        {
-            PerformItemInteraction(hit.gameObject);
-        }
-    }
-
-    private Vector2 GetWorldPositionFromMouse()
+    private Vector3 GetWorldPositionFromMouse()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        worldPoint.z = 0;
+        worldPoint.z = -1;
         return worldPoint;
     }
 
-    private void PerformItemInteraction(GameObject interactionObject)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        switch (interactionObject.tag)
-        {
-            case "StorageRoom":
-                StoreItem(interactionObject);
-                break;
-            case "Part":
-                InteractWithPart(interactionObject);
-                break;
-            default:
-                SnapItemBack();
-                break;
-        }
-
-    }
-
-    private void StoreItem(GameObject storageObject)
-    {
-        isStored = true;
-        transform.SetParent(storageObject.transform);
-        transform.localPosition = new Vector2(0, 0);
-        transform.localScale = new Vector2(1,1);
-    }
-
-    private void InteractWithPart(GameObject partObject)
-    {
-        bool isRepaired = partObject.GetComponent<Part>().Repair(this.itemType, health);
-        Debug.unityLogger.LogWarning("Interact", isRepaired);
-        if (isRepaired)
-        {
-            Consume(health);
-        }
-        else
-        {
-            SnapItemBack();
-        }
-    }
-    private void SnapItemBack()
-    {
-        //transform.SetPositionAndRotation(originPosition, new Quaternion());
+        counter = maxCounter;
     }
 }

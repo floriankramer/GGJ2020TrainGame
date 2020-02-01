@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8147677089920023637}
   - component: {fileID: 82313165454724968}
   - component: {fileID: 6502187746606507204}
+  - component: {fileID: 2549041237200732156}
   m_Layer: 0
   m_Name: Part
   m_TagString: Part
@@ -4899,3 +4900,29 @@ MonoBehaviour:
   probabilityPerTick: 7
   damageMin: 5
   damageMax: 15
+--- !u!61 &2549041237200732156
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121069740234771773}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

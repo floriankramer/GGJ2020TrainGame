@@ -1674,7 +1674,8 @@ MonoBehaviour:
   - {fileID: 1281507153208377129, guid: de223d75ebcdf8620b858ac6fe16d80c, type: 3}
   spawnableObjects:
   - {fileID: 6473337412658022334, guid: cccefb60082062149a2b72e49ddb172c, type: 3}
-  barikade: {fileID: 0}
+  barikade: {fileID: 5716625892924741275, guid: 31a031c0b8ca3f3489f824ce010a3d82,
+    type: 3}
 --- !u!4 &1697510736
 Transform:
   m_ObjectHideFlags: 0
@@ -1960,6 +1961,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206851130625701406, guid: 64a1f7eddc6cd52f9ae0265952b40507,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206851132509370486, guid: 64a1f7eddc6cd52f9ae0265952b40507,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1219017343939582808, guid: 64a1f7eddc6cd52f9ae0265952b40507,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2019,6 +2030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Train
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958297014499391426, guid: 64a1f7eddc6cd52f9ae0265952b40507,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64a1f7eddc6cd52f9ae0265952b40507, type: 3}

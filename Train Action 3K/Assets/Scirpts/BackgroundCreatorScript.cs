@@ -8,7 +8,7 @@ public class BackgroundCreatorScript : MonoBehaviour
     private static float maxTimeSinceBreak = 60f;
     private static float reactionTime = 2f;
     private static float breakTime = 2f;
-    private static float difficulty = 1f;
+    private static float difficulty = 6f;
     
     private float timeTillObjectSpawn =2f;
 

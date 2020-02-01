@@ -37,6 +37,7 @@ public class Part : MonoBehaviour
             int partIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));
             if (partIndex < oldPartIndex) {
                 particleSystem.Play();
+                PlayBreakingSound();
             }
             spriteRenderer.sprite = partSprites[partIndex];
             if (died) {
@@ -64,5 +65,10 @@ public class Part : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void PlayBreakingSound()
+    {
+        this.GetComponent<AudioSource>().Play();
     }
 }

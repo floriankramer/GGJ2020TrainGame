@@ -71,6 +71,7 @@ public class ParallaxMaster : MonoBehaviour
     {
         // Spawn a new sprite
         GameObject newObject = new GameObject("ParalaxLayer");
+        newObject.transform.SetParent(gameObject.transform);
         newObject.transform.position = new Vector3(x, p.yPos, 0);
         newObject.transform.localScale = new Vector3(1, p.yStretch, 1);
 

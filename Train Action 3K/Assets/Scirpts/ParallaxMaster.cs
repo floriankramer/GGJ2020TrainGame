@@ -74,6 +74,7 @@ public class ParallaxMaster : MonoBehaviour
         newObject.transform.SetParent(gameObject.transform);
         newObject.transform.position = new Vector3(x, p.yPos, 0);
         newObject.transform.localScale = new Vector3(1, p.yStretch, 1);
+        newObject.transform.parent = transform;
 
         newObject.AddComponent<SpriteRenderer>();
         SpriteRenderer renderer = newObject.GetComponent<SpriteRenderer>();

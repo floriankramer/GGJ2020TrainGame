@@ -14,7 +14,7 @@ public class BackgroundObject : MonoBehaviour
 
         // Destroy this Object once it leaves the Screen
         // TODO Change -15 to a variable that is reacting to the Screen Size
-        if (transform.position.x < Camera.main.transform.position.x-15)
+        if (transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect * 1.2f)
         {
             Destroy(gameObject);
         }

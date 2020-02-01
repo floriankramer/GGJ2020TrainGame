@@ -13,10 +13,14 @@ public class Barricade : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // Catch Inputs direct at this Object
+    void OnMouseOver()
     {
-        
+        // Check if a Click is happening above the Object
+        if (Input.GetMouseButtonDown(0))
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

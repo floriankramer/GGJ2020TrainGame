@@ -60,6 +60,7 @@ public class Part : MonoBehaviour
     }
 
     public bool Repair(ItemType type, float amount) {
+        repairedBy.Add(type);
         if (Health > 0 && repairedBy.Contains(type)) {
             Health += amount;
             return true;

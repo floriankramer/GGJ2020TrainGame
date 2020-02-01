@@ -59,7 +59,7 @@ public class ItemScript : MonoBehaviour
         if (isStored)
         {
             transform.SetParent(null);
-            originPosition = transform.parent.position;
+            //originPosition = transform.parent.position;
         }
         else
         {
@@ -116,7 +116,6 @@ public class ItemScript : MonoBehaviour
 
     private void InteractWithPart(GameObject partObject)
     {
-        // TODO: Call repair method from part
         bool isRepaired = partObject.GetComponent<Part>().Repair(this.itemType, health);
         Debug.unityLogger.LogWarning("Interact", isRepaired);
         if (isRepaired)
@@ -130,6 +129,6 @@ public class ItemScript : MonoBehaviour
     }
     private void SnapItemBack()
     {
-        transform.SetPositionAndRotation(originPosition, new Quaternion());
+        //transform.SetPositionAndRotation(originPosition, new Quaternion());
     }
 }

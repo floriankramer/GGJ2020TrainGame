@@ -41,6 +41,11 @@ PrefabInstance:
       propertyPath: repairedBy.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: partType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3166271919992441903, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: m_Sprite

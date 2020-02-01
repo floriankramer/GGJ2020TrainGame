@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4011001528789274674
+--- !u!1001 &5326505051294200404
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,32 +11,42 @@ PrefabInstance:
         type: 3}
       propertyPath: partSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: e52ce69b09af9c04590c4597268c071f,
+      objectReference: {fileID: 21300000, guid: 5a88b1b3a85cc624ca5383b32b59776d,
         type: 3}
     - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: partSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 9d5a47766a165404ba3fa0961fa2b540,
+      objectReference: {fileID: 21300000, guid: 8bde80356f2600b48ab41dadb24250dc,
         type: 3}
     - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: partSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: d4f47a05b3cebff45a7211099cdb5e72,
+      objectReference: {fileID: 21300000, guid: 7c033a77b0c1bd2408cd0683ba007534,
         type: 3}
     - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: partSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 1cd4a43c28033244d9e75203ef22b936,
+      objectReference: {fileID: 21300000, guid: dc3c8a76492a53d45ab0e9000ce1c1ff,
         type: 3}
+    - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: partType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3166271919992441903, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1cd4a43c28033244d9e75203ef22b936,
+      objectReference: {fileID: 21300000, guid: dc3c8a76492a53d45ab0e9000ce1c1ff,
         type: 3}
+    - target: {fileID: 3166271919992441903, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6091181852247337530, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,12 +105,7 @@ PrefabInstance:
     - target: {fileID: 8121069740234771773, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: m_Name
-      value: LokVent3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8121069740234771773, guid: 28e12ee1f9e29b14abde272f237f5c05,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
+      value: LokWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28e12ee1f9e29b14abde272f237f5c05, type: 3}

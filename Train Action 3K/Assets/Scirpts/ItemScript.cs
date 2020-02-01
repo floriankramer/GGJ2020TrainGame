@@ -4,26 +4,41 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    public ItemType rescourceType = ItemType.Wood;
+    public ItemType itemType = ItemType.Wood;
 
     [SerializeField]
     [Range(0.0f, 100.0f)]
     public float health = 100.0f;
 
     private BoxCollider2D boxCollider;
-    private Vector2 originPosition;
-    private bool foundStorage = false;
+    public Vector2 originPosition;
+    public Vector2 backgroundPosition;
+    private bool isStored = false;
+    private bool isInBackground = true;
 
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        originPosition = transform.position;
+        backgroundPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float xPosition = backgroundPosition.x + Train.trainSpeed * Time.deltaTime * -1;
+        backgroundPosition = new Vector3(xPosition, transform.position.y);
 
+        if (isInBackground && !isStored)
+        {
+            SyncSpeedWithTrain(backgroundPosition);
+        }
+    }
+
+    private void SyncSpeedWithTrain(Vector2 backgroundPosition)
+    {
+        transform.position = backgroundPosition;
     }
 
     public void Consume(float amount)
@@ -42,6 +57,7 @@ public class ItemScript : MonoBehaviour
 
     void OnMouseDown()
     {
+        isInBackground = false;
         originPosition = transform.position;
     }
 
@@ -86,7 +102,7 @@ public class ItemScript : MonoBehaviour
 
     private void StoreItem(GameObject storageObject)
     {
-        foundStorage = true;
+        isStored = true;
         transform.SetParent(storageObject.transform);
         transform.localPosition = new Vector3(0, 0, 0);
     }
@@ -94,11 +110,28 @@ public class ItemScript : MonoBehaviour
     private void InteractWithPart(GameObject partObject)
     {
         // TODO: Call repair method from part
-        partObject.GetComponent<Part>().Health = 100;
-        Consume(health);
+        bool isRepaired = partObject.GetComponent<Part>().Repair(this.itemType, health);
+        Debug.unityLogger.LogWarning("Interact", isRepaired);
+        if (isRepaired)
+        {
+            Consume(health);
+        }
+        else
+        {
+            SnapItemBack();
+        }
     }
     private void SnapItemBack()
     {
-        transform.SetPositionAndRotation(originPosition, new Quaternion());
+        Vector2 positionToSnap;
+        if (isStored){
+            positionToSnap = originPosition;
+        }
+        else
+        {
+            positionToSnap = backgroundPosition;
+            isInBackground = true;
+        }
+        transform.SetPositionAndRotation(positionToSnap, new Quaternion());
     }
 }

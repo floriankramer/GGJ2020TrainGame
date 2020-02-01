@@ -37,9 +37,9 @@ public class ParallaxMaster : MonoBehaviour
 
             float spriteWidth = p.sprite.bounds.max.x - p.sprite.bounds.min.x - p.overlap;
             int numSprites = (int)Mathf.Ceil(screenwidth / spriteWidth);
-            for (int j = 0; j < numSprites + 1; ++j)
+            for (int j = 0; j < numSprites + 2; ++j)
             {
-                SpawnLayerAt(rightEdge + spriteWidth / 2 - j * spriteWidth, i, p);
+                SpawnLayerAt(rightEdge + spriteWidth * 1.5f - j * spriteWidth, i, p);
             }
         }
     }
@@ -61,7 +61,7 @@ public class ParallaxMaster : MonoBehaviour
             offset -= spriteWidth / 2;
             if (lastPositions[p] > 0 && offset < 0)
             {
-                SpawnLayerAt(rightEdge + spriteWidth / 2, i, p);
+                SpawnLayerAt(rightEdge + spriteWidth * 1.5f, i, p);
             }
             lastPositions[p] = offset;
         }

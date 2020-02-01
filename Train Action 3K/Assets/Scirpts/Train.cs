@@ -5,10 +5,15 @@ using UnityEngine;
 public class Train : MonoBehaviour
 {
     public static float trainSpeed = 4f;
+    public static float EngineLength = 7;
+    public static float CarLength = 3;
 
     private Dictionary<PartType, List<Part>> parts = new Dictionary<PartType, List<Part>>();
 
     public GameObject GameOverScreen;
+    public GameObject TrainCarObj;
+
+    public int numCars = 1;
 
 
     // Start is called before the first frame update
@@ -60,6 +65,17 @@ public class Train : MonoBehaviour
         o.transform.position = new Vector3(0, 0, 10);
         o.transform.localScale = new Vector3(1, 1, 1);
         o.transform.rotation = new Quaternion(0, 0, 0, 1);
+
+    }
+
+    public void AddCar() {
+        GameObject newCar = GameObject.Instantiate(TrainCarObj, new Vector3(0, 0, 0), new Quaternion());
+        numCars += 1;
+
+        newCar.transform.SetParent(gameObject.transform);
+        newCar.transform.localPosition = new Vector3(-5.1f - (numCars - 1) * CarLength, -0.32f, 0);
+        newCar.transform.rotation = new Quaternion();
+        newCar.transform.localScale = new Vector3(1, 1, 1);
 
     }
 }

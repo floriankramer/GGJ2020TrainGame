@@ -21,6 +21,11 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void QuitGame()
     {
         Debug.Log("Quit!");

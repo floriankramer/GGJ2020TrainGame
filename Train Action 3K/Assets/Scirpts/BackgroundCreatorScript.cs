@@ -16,6 +16,7 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     public GameObject[] items;
     public GameObject[] spawnableObjects;
+    public GameObject barikade;
 
     private float nextSpawnDistance;
     private float spawnDistance;
@@ -25,8 +26,8 @@ public class BackgroundCreatorScript : MonoBehaviour
     private float maxObjectDistance = 6f;
 
     // Values for the Spawning on the Y-Axis
-    private float minObjectYValue = 2;
-    private float maxObjectYValue = 4;
+    private float minObjectYValue = -1;
+    private float maxObjectYValue = 1.8f;
 
 
     // Start is called before the first frame update
@@ -88,12 +89,15 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     void SpawnObject()
     {
+        Debug.Log("1");
         // Spawn an item if there is to much unpreventable Damage
         if (Tracker.totalDamage > 70)
         {
             //Spawn a Item based on a part type
             SpawnItem(Tracker.comparePartTypeHealth());
             timeTillObjectSpawn += reactionTime + (difficulty*0.2f);
+            Tracker.totalDamage -= 50;
+            Debug.Log("2");
             return;
         }
 
@@ -101,12 +105,13 @@ public class BackgroundCreatorScript : MonoBehaviour
         if (Tracker.timeSinceBreak > maxTimeSinceBreak)
         {
             timeTillObjectSpawn += breakTime * (1 +  difficulty /10);
+            Debug.Log("3");
             return;
         }
 
         // Choose a Object to be spawned based on pseudorandomness
         float randomValue = Random.value * 100;
-
+        Debug.Log(randomValue);
         // Add long Break
         if (randomValue < 0.05)
         {
@@ -132,7 +137,9 @@ public class BackgroundCreatorScript : MonoBehaviour
         // Add Barikade
         if (randomValue < 0.7 - (difficulty / 100))
         {
-            SpawnBarikade();
+            Debug.Log("Spawn Barikade");
+            Vector3 coordinates = new Vector3(Camera.main.transform.position.x +20, 0);
+            Instantiate(barikade, coordinates , Quaternion.identity);
             timeTillObjectSpawn += reactionTime + (difficulty * 0.2f);
             return;
         }
@@ -147,21 +154,16 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     public void SpawnItem(PartType part)
     {
-        // TODO implement
         // TODO add Script that adds a spawnObjectY infront of the train
         float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
 
-        // TODO Change 15 to value based on the Screen Size
-        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + 15, spawnObjectY), Quaternion.identity);
+        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + 20, spawnObjectY), Quaternion.identity);
     }
 
-    public void SpawnBarikade()
+    public float GetObjectSpwanYRange()
     {
-        /*/ TODO implement
-        float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
-        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + 15, spawnObjectY), Quaternion.identity);*/
+        return 2;
     }
-
 
 
 }

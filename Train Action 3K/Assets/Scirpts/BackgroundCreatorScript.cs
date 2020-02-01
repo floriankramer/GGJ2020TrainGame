@@ -157,9 +157,9 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     public void SpawnBarikade()
     {
-        // TODO implement
+        /*/ TODO implement
         float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
-        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + 15, spawnObjectY), Quaternion.identity);
+        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + 15, spawnObjectY), Quaternion.identity);*/
     }
 
 

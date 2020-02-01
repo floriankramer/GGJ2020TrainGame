@@ -34,6 +34,11 @@ public class ItemScript : MonoBehaviour
         {
             SyncSpeedWithTrain(backgroundPosition);
         }*/
+
+        if (transform.position.x < Camera.main.transform.position.x - 15)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void SyncSpeedWithTrain(Vector2 backgroundPosition)

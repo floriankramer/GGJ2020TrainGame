@@ -3,7 +3,11 @@ guid: f87ff0902ec894643878eefb7c3b405b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - GameOverScreen: {fileID: 2712862226545314723, guid: b11393241904a0982a021bdbbb00f4bb,
+      type: 3}
+  - GameOverAudioClip: {fileID: 8300000, guid: f398a68e6d650894cad01853bb94197a, type: 3}
+  - TrainCarObj: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

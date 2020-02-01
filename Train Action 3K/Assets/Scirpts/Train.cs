@@ -69,7 +69,7 @@ public class Train : MonoBehaviour
         HandleAudio();
         GameObject o = Instantiate(GameOverScreen, new Vector3(0, 0, 0), new Quaternion());
         o.transform.SetParent(GameObject.Find("Canvas").transform);
-        o.transform.position = new Vector3(0, 0, 10);
+        o.transform.localPosition = new Vector3(0, 0, 10);
         o.transform.localScale = new Vector3(1, 1, 1);
         o.transform.rotation = new Quaternion(0, 0, 0, 1);
         isGameOver = true;

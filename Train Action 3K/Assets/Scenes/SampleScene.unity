@@ -1827,7 +1827,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 8b6bfbbf386d75c408c380bc2fa59c7f, type: 3}
     movementFactor: 1
     yPos: 6.487939
-    overlap: 0.05
+    overlap: 0.1
     yStretch: 1
   - sprite: {fileID: 21300000, guid: a7c424abd21590ce694f6f0d00b5fdd0, type: 3}
     movementFactor: 0.4
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 8974ddca7543caca7b2d2dd281bb1c7f, type: 3}
     movementFactor: 1
     yPos: -5.02
-    overlap: 0.05
+    overlap: 0.1
     yStretch: 3.0965
   - sprite: {fileID: 21300000, guid: 86b7dc180ee1b60009b228e762fa8657, type: 3}
     movementFactor: 1

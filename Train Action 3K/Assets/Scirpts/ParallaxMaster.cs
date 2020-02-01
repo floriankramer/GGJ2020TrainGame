@@ -56,7 +56,6 @@ public class ParallaxMaster : MonoBehaviour
             float absPos = p.movementFactor * cpos;
             float offset = absPos % spriteWidth;
             offset -= spriteWidth / 2;
-            Debug.LogWarning(offset);
             if (lastPositions[p] > 0 && offset < 0)
             {
                 SpawnLayerAt(rightEdge + spriteWidth / 2, i, p);

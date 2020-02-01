@@ -67,11 +67,12 @@ public class ItemScript : MonoBehaviour
 
             if("Part" == hit.gameObject.tag)
             {
+                
                 Consume(health);
             }
         }
 
-        if(!foundStorage && transform.parent.parent != null)
+        if(!foundStorage)
         {
             // TODO: Where do we parent to?
             transform.SetParent(transform.parent.parent);

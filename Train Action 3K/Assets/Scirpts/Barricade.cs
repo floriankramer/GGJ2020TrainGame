@@ -22,7 +22,7 @@ public class Barricade : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if(collision.gameObject.GetComponent<Part>() != null || collision.gameObject.GetComponent<Train>() != null)
+        if(collision.gameObject.GetComponent<Part>() != null || collision.gameObject.GetComponentInParent<Train>() != null)
         {
             Part[] parts = FindObjectsOfType<Part>();
 

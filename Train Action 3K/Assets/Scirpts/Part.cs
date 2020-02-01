@@ -31,7 +31,7 @@ public class Part : MonoBehaviour
             bool died = health > 0 && value <= 0;
             value = Mathf.Max(value, 0);
 
-            int oldPartIndex = (int)Mathf.Ceil(this.health /  (100 / 3));
+            int oldPartIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));
             // TODO: Check if health is 0.0f and start a fancy explosion animation!
             this.health = value;
             int partIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));

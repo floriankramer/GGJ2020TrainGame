@@ -21,7 +21,6 @@ public class Barricade : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit something!");
         
         if(collision.gameObject.GetComponent<Part>() != null || collision.gameObject.GetComponentInParent<Train>() != null)
         {

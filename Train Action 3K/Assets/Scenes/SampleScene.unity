@@ -1284,7 +1284,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2043119643
   m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1471609490
@@ -1300,7 +1300,7 @@ RectTransform:
   m_Children:
   - {fileID: 1241168065}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1688,7 +1688,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1718515081 stripped
 Transform:
@@ -2009,7 +2009,7 @@ PrefabInstance:
     - target: {fileID: 1219017343939582808, guid: 64a1f7eddc6cd52f9ae0265952b40507,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1219017343939582808, guid: 64a1f7eddc6cd52f9ae0265952b40507,
         type: 3}

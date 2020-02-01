@@ -52,6 +52,7 @@ public class Train : MonoBehaviour
 
     void Defeat() {
         trainSpeed = 0;
+        this.GetComponent<AudioSource>().Pause();
         GameObject o = Instantiate(GameOverScreen, new Vector3(0, 0, 0), new Quaternion());
         o.transform.SetParent(GameObject.Find("Canvas").transform);
         o.transform.position = new Vector3(0, 0, 10);

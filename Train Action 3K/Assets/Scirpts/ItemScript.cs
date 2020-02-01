@@ -12,30 +12,27 @@ public class ItemScript : MonoBehaviour
 
     private BoxCollider2D boxCollider;
     public Vector2 originPosition;
-    public Vector2 backgroundPosition;
     private bool isStored = false;
     private bool isInBackground = true;
+    private bool latchSetLocalPositionAgain = false;
 
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         originPosition = transform.position;
-        backgroundPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*float xPosition = backgroundPosition.x + Train.trainSpeed * Time.deltaTime * -1;
-        backgroundPosition = new Vector3(xPosition, transform.position.y);
 
-        if (isInBackground && !isStored)
-        {
-            SyncSpeedWithTrain(backgroundPosition);
-        }*/
+        if (isStored && !latchSetLocalPositionAgain) {
+            transform.localPosition = new Vector2(0, 0);
+            latchSetLocalPositionAgain = true;
+        }
 
-        if (transform.position.x < Camera.main.transform.position.x - 15)
+        if (!isStored && transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect)
         {
             Destroy(gameObject);
         }
@@ -51,19 +48,23 @@ public class ItemScript : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
-            RemoveExistance();
+            Destroy(gameObject);
         }
-    }
-
-    private void RemoveExistance()
-    {
-        Destroy(gameObject);
     }
 
     void OnMouseDown()
     {
         isInBackground = false;
-        originPosition = transform.position;
+        latchSetLocalPositionAgain = false;
+        if (isStored)
+        {
+            transform.SetParent(null);
+            originPosition = transform.parent.position;
+        }
+        else
+        {
+            originPosition = transform.position;
+        }
     }
 
     void OnMouseDrag()
@@ -109,7 +110,8 @@ public class ItemScript : MonoBehaviour
     {
         isStored = true;
         transform.SetParent(storageObject.transform);
-        transform.localPosition = new Vector3(0, 0, 0);
+        transform.localPosition = new Vector2(0, 0);
+        transform.localScale = new Vector2(1,1);
     }
 
     private void InteractWithPart(GameObject partObject)
@@ -128,15 +130,6 @@ public class ItemScript : MonoBehaviour
     }
     private void SnapItemBack()
     {
-        Vector2 positionToSnap;
-        if (isStored){
-            positionToSnap = originPosition;
-        }
-        else
-        {
-            positionToSnap = backgroundPosition;
-            isInBackground = true;
-        }
-        transform.SetPositionAndRotation(positionToSnap, new Quaternion());
+        //transform.SetPositionAndRotation(originPosition, new Quaternion());
     }
 }

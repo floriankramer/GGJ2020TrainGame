@@ -38,7 +38,7 @@ public class BackgroundCreatorScript : MonoBehaviour
     void SpawnSomething()
     {
         // TODO add Script that selects a fitting Background Object from the List
-        GameObject spawnThis = spawnableObjects[0];
+        GameObject spawnThis = spawnableObjects[Random.Range(0, 2)];
 
         // TODO add Script that adds a spawnObjectY infront of the train
         float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);

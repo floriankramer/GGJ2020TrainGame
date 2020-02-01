@@ -47,11 +47,14 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Move with the Speed of the Train
+        float xPosition = transform.position.x + Train.trainSpeed * Time.deltaTime;
+        transform.position = new Vector3(xPosition, transform.position.y);
     }
 
     void Defeat() {
         trainSpeed = 0;
+        this.GetComponent<AudioSource>().Pause();
         GameObject o = Instantiate(GameOverScreen, new Vector3(0, 0, 0), new Quaternion());
         o.transform.SetParent(GameObject.Find("Canvas").transform);
         o.transform.position = new Vector3(0, 0, 10);

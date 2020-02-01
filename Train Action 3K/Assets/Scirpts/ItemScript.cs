@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    public RescourceType rescourceType = RescourceType.Wood;
-    
+    public ItemType rescourceType = ItemType.Wood;
+
     [SerializeField]
     [Range(0.0f, 100.0f)]
     public float health = 100.0f;
@@ -23,7 +23,7 @@ public class ItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Consume(float amount)
@@ -54,7 +54,7 @@ public class ItemScript : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
 
-        foreach(Collider2D hit in hits )
+        foreach (Collider2D hit in hits)
         {
             PerformItemInteraction(hit.gameObject);
         }
@@ -88,7 +88,7 @@ public class ItemScript : MonoBehaviour
     {
         foundStorage = true;
         transform.SetParent(storageObject.transform);
-        transform.localPosition = new Vector3(0,0,0);
+        transform.localPosition = new Vector3(0, 0, 0);
     }
 
     private void InteractWithPart(GameObject partObject)
@@ -99,12 +99,6 @@ public class ItemScript : MonoBehaviour
     }
     private void SnapItemBack()
     {
-        transform.SetPositionAndRotation(originPosition,new Quaternion());
-    }
-
-
-    public enum RescourceType {
-        Wood,
-        Steel
+        transform.SetPositionAndRotation(originPosition, new Quaternion());
     }
 }

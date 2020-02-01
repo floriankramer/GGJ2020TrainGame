@@ -1634,6 +1634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390c171b04c86c245857469eb812e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items:
+  - {fileID: 1281507153208377129, guid: de223d75ebcdf8620b858ac6fe16d80c, type: 3}
   spawnableObjects:
   - {fileID: 6473337412658022334, guid: cccefb60082062149a2b72e49ddb172c, type: 3}
 --- !u!4 &1697510736

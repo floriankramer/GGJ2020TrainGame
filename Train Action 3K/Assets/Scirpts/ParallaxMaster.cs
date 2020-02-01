@@ -9,6 +9,9 @@ public class ParallaxLayer
     public float movementFactor = 1;
 
     public float yPos = 0;
+
+    public float overlap = 0.1f;
+    public float yStretch = 1;
 }
 
 
@@ -32,7 +35,7 @@ public class ParallaxMaster : MonoBehaviour
             ParallaxLayer p = layers[i];
             lastPositions[p] = 1;
 
-            float spriteWidth = p.sprite.bounds.max.x - p.sprite.bounds.min.x;
+            float spriteWidth = p.sprite.bounds.max.x - p.sprite.bounds.min.x - p.overlap;
             int numSprites = (int)Mathf.Ceil(screenwidth / spriteWidth);
             for (int j = 0; j < numSprites + 1; ++j)
             {
@@ -52,7 +55,7 @@ public class ParallaxMaster : MonoBehaviour
         {
             ParallaxLayer p = layers[i];
 
-            float spriteWidth = p.sprite.bounds.max.x - p.sprite.bounds.min.x;
+            float spriteWidth = p.sprite.bounds.max.x - p.sprite.bounds.min.x - p.overlap;
             float absPos = p.movementFactor * cpos;
             float offset = absPos % spriteWidth;
             offset -= spriteWidth / 2;
@@ -69,6 +72,7 @@ public class ParallaxMaster : MonoBehaviour
         // Spawn a new sprite
         GameObject newObject = new GameObject("ParalaxLayer");
         newObject.transform.position = new Vector3(x, p.yPos, 0);
+        newObject.transform.localScale = new Vector3(1, p.yStretch, 1);
 
         newObject.AddComponent<SpriteRenderer>();
         SpriteRenderer renderer = newObject.GetComponent<SpriteRenderer>();

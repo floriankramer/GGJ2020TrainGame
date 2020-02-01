@@ -24,11 +24,11 @@ public class CameraFollow : MonoBehaviour
         targetPosition.x -= Camera.main.orthographicSize * Camera.main.aspect;
         this.transform.position = (drag * this.transform.position) + ((1.0f - drag) * targetPosition);
 
-        Train t = target.GetComponent<Train>();
-        if (t != null)  {
-            float length = Train.EngineLength + t.numCars * Train.CarLength;
-            float padding = 0.5f * length;
-            Camera.main.orthographicSize = (2 * padding + length) / Camera.main.aspect / 2;
-        }
+        // Train t = target.GetComponent<Train>();
+        // if (t != null)  {
+        //     float length = Train.EngineLength + t.numCars * Train.CarLength;
+        //     float padding = 0.5f * length;
+        //     Camera.main.orthographicSize = (2 * padding + length) / Camera.main.aspect / 2;
+        // }
     }
 }

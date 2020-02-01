@@ -120,3 +120,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  ProgressBarTemplate: {fileID: 1614042349375446792, guid: a7fc2ddd6e377eb5d88efbdde572d536,
+    type: 3}

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ItemScript : MonoBehaviour
 {
@@ -10,6 +12,11 @@ public class ItemScript : MonoBehaviour
     float counter = 2f;
     float maxCounter = 2f;
     float repairValue;
+
+    public GameObject ProgressBarTemplate;
+
+    private GameObject progressBar;
+    private ProgressBar progressBarBar;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +44,19 @@ public class ItemScript : MonoBehaviour
                     Debug.Log("Found a part");
                     if (colPart.CanRepair(itemType))
                     {
+                        if (counter == maxCounter) {
+                            OnStartRepair();
+                        }
                         Debug.Log("Repairing" + counter);
                         counter -= Time.deltaTime;
+
+                        progressBarBar.SetProgress(counter / maxCounter);
+
                         foundPart = true;
                         if (counter < 0)
                         {
                             colPart.Repair(itemType, 100);
+                            OnStopRepair();
                             Destroy(gameObject);
                         }
                         break;
@@ -53,9 +67,26 @@ public class ItemScript : MonoBehaviour
             if (!foundPart)
             {
                 counter = maxCounter;
+                OnStopRepair();
             }
 
         }
+    }
+
+    void OnStartRepair() {
+        progressBar = GameObject.Instantiate(ProgressBarTemplate, new Vector3(0, 0, 0), new Quaternion());
+        progressBar.transform.SetParent(GameObject.Find("Canvas").transform);
+        progressBar.transform.position = new Vector3(0, 0, -5);
+        progressBar.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+        progressBar.transform.rotation = new Quaternion();
+
+        progressBarBar = progressBar.GetComponent<ProgressBar>();
+        progressBarBar.target = gameObject;
+
+    }
+
+    void OnStopRepair() {
+        Destroy(progressBar);
     }
 
     // If the Mouse is above this Object

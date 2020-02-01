@@ -5,7 +5,10 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
     public RescourceType rescourceType = RescourceType.Wood;
-    public float health = 100;
+    
+    [SerializeField]
+    [Range(0.0f, 100.0f)]
+    public float health = 100.0f;
 
     private BoxCollider2D boxCollider;
     private Vector2 originPosition;
@@ -39,7 +42,7 @@ public class ItemScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        originPosition = GetWorldPositionFromMouse();
+        originPosition = transform.position;
     }
 
     void OnMouseDrag()
@@ -50,34 +53,10 @@ public class ItemScript : MonoBehaviour
     void OnMouseUp()
     {
         Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
-        Debug.unityLogger.LogWarning("Item", hits.Length);
 
         foreach(Collider2D hit in hits )
         {
-            if("StorageRoom" == hit.gameObject.tag)
-            {
-                foundStorage = true;
-                transform.SetParent(hit.gameObject.transform);
-                transform.localPosition = new Vector3(0,0,0);
-                break;
-            }
-            else if("Part" == hit.gameObject.tag)
-            {
-                // TODO: Call repair method from part
-                hit.gameObject.GetComponent<Part>().Health = 100;
-                Consume(health);
-            }
-            else
-            {
-                transform.SetPositionAndRotation(originPosition,new Quaternion());
-            }
-        }
-
-        if(!foundStorage)
-        {
-            // TODO: Where do we parent to?
-            //transform.SetParent(transform.parent.parent);
-            //Consume(health);
+            PerformItemInteraction(hit.gameObject);
         }
     }
 
@@ -86,6 +65,41 @@ public class ItemScript : MonoBehaviour
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPoint.z = 0;
         return worldPoint;
+    }
+
+    private void PerformItemInteraction(GameObject interactionObject)
+    {
+        switch (interactionObject.tag)
+        {
+            case "StorageRoom":
+                StoreItem(interactionObject);
+                break;
+            case "Part":
+                InteractWithPart(interactionObject);
+                break;
+            default:
+                SnapItemBack();
+                break;
+        }
+
+    }
+
+    private void StoreItem(GameObject storageObject)
+    {
+        foundStorage = true;
+        transform.SetParent(storageObject.transform);
+        transform.localPosition = new Vector3(0,0,0);
+    }
+
+    private void InteractWithPart(GameObject partObject)
+    {
+        // TODO: Call repair method from part
+        partObject.GetComponent<Part>().Health = 100;
+        Consume(health);
+    }
+    private void SnapItemBack()
+    {
+        transform.SetPositionAndRotation(originPosition,new Quaternion());
     }
 
 

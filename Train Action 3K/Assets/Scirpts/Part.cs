@@ -5,6 +5,7 @@ using UnityEngine;
 public class Part : MonoBehaviour
 {
     public PartType partType;
+    public List<ItemType> repairedBy = new List<ItemType>();
 
 
     public Sprite[] partSprites = new Sprite[4];
@@ -45,5 +46,13 @@ public class Part : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public bool Repair(ItemType type, float amount) {
+        if (Health > 0 && repairedBy.Contains(type)) {
+            Health += amount;
+            return true;
+        }
+        return false;
     }
 }

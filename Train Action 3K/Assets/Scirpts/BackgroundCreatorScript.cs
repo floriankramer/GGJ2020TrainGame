@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class BackgroundCreatorScript : MonoBehaviour
 {
-    
+
+    private static float maxTimeSinceBreak = 60f;
+
+
+
+
 
     public GameObject[] spawnableObjects;
 
@@ -29,15 +34,17 @@ public class BackgroundCreatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Tracker.timeSinceBreak += Time.deltaTime;
+
         spawnDistance += Train.trainSpeed * Time.deltaTime;
         if (nextSpawnDistance < spawnDistance)
         {
-            SpawnSomething();
+            SpawnBackground();
             spawnDistance = 0;
         }
     }
 
-    void SpawnSomething()
+    void SpawnBackground()
     {
         // TODO add Script that selects a fitting Background Object from the List
         GameObject spawnThis = spawnableObjects[0];
@@ -46,11 +53,34 @@ public class BackgroundCreatorScript : MonoBehaviour
         float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
 
         // TODO Change 15 to value based on the Screen Size
-        Instantiate(spawnThis, new Vector3(15, spawnObjectY), Quaternion.identity);
+        Instantiate(spawnThis, new Vector3(Camera.main.transform.position.x + 15, spawnObjectY), Quaternion.identity);
 
         float size = spawnThis.GetComponent<SpriteRenderer>().sprite.rect.size.x/100;
         float minSpawnDistance = size + minObjectDistance;
         float maxSpawnDistance = minSpawnDistance + maxObjectDistance;
         nextSpawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
+    }
+
+
+    private
+
+    void spawn()
+    {
+        // Spawn an item if there is to much unpreventable Damage
+        if (Tracker.totalDamage > 70)
+        {
+            //TODO Spawn a Item based on a part type
+            //Tracker.comparePartTypeHealth();
+            return;
+        }
+
+        if (Tracker.timeSinceBreak > maxTimeSinceBreak)
+        {
+            //
+        }
+
+
+
+
     }
 }

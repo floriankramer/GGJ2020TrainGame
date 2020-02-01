@@ -47,7 +47,9 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Move with the Speed of the Train
+        float xPosition = transform.position.x + Train.trainSpeed * Time.deltaTime;
+        transform.position = new Vector3(xPosition, transform.position.y);
     }
 
     void Defeat() {

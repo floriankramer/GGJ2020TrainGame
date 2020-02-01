@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tracker : MonoBehaviour
 {
+    public static float timeSinceBreak;
     public static float totalDamage;
     public static float wheeleHealthPercentage;
     public static float strutHealthPercentage;
@@ -39,7 +40,6 @@ public class Tracker : MonoBehaviour
                 vents.Add(part);
             }
         }
-        Debug.Log(vents.Count);
     }
 
     // Update is called once per frame
@@ -81,7 +81,45 @@ public class Tracker : MonoBehaviour
         }
         ventHealthPercentage = (health / vents.Count) / 100.0f;
 
-        Debug.Log(ventHealthPercentage);
+    }
+
+    public static PartType comparePartTypeHealth()
+    {
+        PartType compare1;
+        float compare1Value;
+        if (wheeleHealthPercentage < strutHealthPercentage)
+        {
+            compare1 = PartType.Wheel;
+            compare1Value = wheeleHealthPercentage;
+        }
+        else
+        {
+            compare1 = PartType.Strut;
+            compare1Value = strutHealthPercentage;
+        }
+
+        PartType compare2;
+        float compare2Value;
+        if (windowHealthPercentage < ventHealthPercentage)
+        {
+            compare2 = PartType.Wheel;
+            compare2Value = windowHealthPercentage;
+        }
+        else
+        {
+            compare2 = PartType.Strut;
+            compare2Value = ventHealthPercentage;
+        }
+        
+
+        if (compare1Value < compare2Value)
+        {
+            return compare1;
+        }
+        else
+        {
+            return compare2;
+        }
 
     }
 

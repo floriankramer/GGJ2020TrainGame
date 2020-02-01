@@ -27,13 +27,13 @@ public class ItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xPosition = backgroundPosition.x + Train.trainSpeed * Time.deltaTime * -1;
+        /*float xPosition = backgroundPosition.x + Train.trainSpeed * Time.deltaTime * -1;
         backgroundPosition = new Vector3(xPosition, transform.position.y);
 
         if (isInBackground && !isStored)
         {
             SyncSpeedWithTrain(backgroundPosition);
-        }
+        }*/
     }
 
     private void SyncSpeedWithTrain(Vector2 backgroundPosition)

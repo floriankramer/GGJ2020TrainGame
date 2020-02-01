@@ -25,12 +25,15 @@ public class Part : MonoBehaviour
         }
         set
         {
-            if (value < 75 && (int)(this.health / 25) > (int)(value / 25)) {
-                particleSystem.Play();
-            }
+            value = Mathf.Max(value, 0);
+
+            int oldPartIndex = (int)Mathf.Ceil(this.health /  (100 / 3));
             // TODO: Check if health is 0.0f and start a fancy explosion animation!
             this.health = value;
-            int partIndex = (int)(this.health / 25);
+            int partIndex = (int)Mathf.Ceil(this.health /  (100 / 3));
+            if (partIndex < oldPartIndex) {
+                particleSystem.Play();
+            }
             spriteRenderer.sprite = partSprites[partIndex];
         }
     }

@@ -11,9 +11,12 @@ public class Train : MonoBehaviour
     private Dictionary<PartType, List<Part>> parts = new Dictionary<PartType, List<Part>>();
 
     public GameObject GameOverScreen;
+    public AudioClip GameOverAudioClip;
     public GameObject TrainCarObj;
 
     public int numCars = 1;
+
+    private bool isGameOver = false;
 
 
     // Start is called before the first frame update
@@ -58,14 +61,27 @@ public class Train : MonoBehaviour
     }
 
     void Defeat() {
+        if (isGameOver)
+        {
+            return;
+        }
         trainSpeed = 0;
-        this.GetComponent<AudioSource>().Pause();
+        HandleAudio();
         GameObject o = Instantiate(GameOverScreen, new Vector3(0, 0, 0), new Quaternion());
         o.transform.SetParent(GameObject.Find("Canvas").transform);
         o.transform.position = new Vector3(0, 0, 10);
         o.transform.localScale = new Vector3(1, 1, 1);
         o.transform.rotation = new Quaternion(0, 0, 0, 1);
+        isGameOver = true;
+    }
 
+    private void HandleAudio()
+    {
+        AudioSource audioSource = this.GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = GameOverAudioClip;
+        audioSource.loop = false;
+        audioSource.Play();
     }
 
     public void AddCar() {

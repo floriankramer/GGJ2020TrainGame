@@ -32,7 +32,7 @@ public class ItemScript : MonoBehaviour
             latchSetLocalPositionAgain = true;
         }
 
-        if (!isStored && transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect)
+        if (!isStored && transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect * 2.2)
         {
             Destroy(gameObject);
         }
@@ -130,6 +130,6 @@ public class ItemScript : MonoBehaviour
     }
     private void SnapItemBack()
     {
-        //transform.SetPositionAndRotation(originPosition, new Quaternion());
+        transform.SetPositionAndRotation(originPosition, new Quaternion());
     }
 }

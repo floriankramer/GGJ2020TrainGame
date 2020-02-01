@@ -8,9 +8,9 @@ public class BackgroundCreatorScript : MonoBehaviour
     private static float maxTimeSinceBreak = 60f;
     private static float reactionTime = 2f;
     private static float breakTime = 2f;
-    private static float difficulty = 5f;
+    private static float difficulty = 1f;
     
-    private float timeTillObjectSpawn =5f;
+    private float timeTillObjectSpawn =2f;
 
 
 
@@ -28,13 +28,6 @@ public class BackgroundCreatorScript : MonoBehaviour
     // Values for the Spawning on the Y-Axis
     private float minObjectYValue = -1;
     private float maxObjectYValue = 1.8f;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -89,40 +82,36 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     void SpawnObject()
     {
-        Debug.Log("1");
         // Spawn an item if there is to much unpreventable Damage
-        if (Tracker.totalDamage > 70)
+        /*if (Tracker.totalDamage > 700)
         {
             //Spawn a Item based on a part type
             SpawnItem(Tracker.comparePartTypeHealth());
             timeTillObjectSpawn += reactionTime + (difficulty*0.2f);
             Tracker.totalDamage -= 50;
-            Debug.Log("2");
             return;
-        }
+        }*/
 
         // Take a break if there wasn't a break for a long time
         if (Tracker.timeSinceBreak > maxTimeSinceBreak)
         {
             timeTillObjectSpawn += breakTime * (1 +  difficulty /10);
-            Debug.Log("3");
             return;
         }
 
         // Choose a Object to be spawned based on pseudorandomness
-        float randomValue = Random.value * 100;
-        Debug.Log(randomValue);
+        float randomValue = Random.value;
         // Add long Break
         if (randomValue < 0.05)
         {
-            timeTillObjectSpawn += 2* breakTime * (1 + difficulty / 10);
+            timeTillObjectSpawn = 2* breakTime + breakTime*(difficulty / 10);
             return;
         }
 
         // Add short Break
         if (randomValue < 0.3)
         {
-            timeTillObjectSpawn += breakTime * (1 + difficulty / 10);
+            timeTillObjectSpawn = breakTime + breakTime * (1 + (difficulty / 10));
             return;
         }
 
@@ -130,17 +119,16 @@ public class BackgroundCreatorScript : MonoBehaviour
         if (randomValue < 0.3+ (difficulty/100))
         {
             SpawnItem(Tracker.comparePartTypeHealth());
-            timeTillObjectSpawn += reactionTime + (difficulty * 0.2f);
+            timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
             return;
         }
 
         // Add Barikade
         if (randomValue < 0.7 - (difficulty / 100))
         {
-            Debug.Log("Spawn Barikade");
-            Vector3 coordinates = new Vector3(Camera.main.transform.position.x +20, 0);
+            Vector3 coordinates = new Vector3(Camera.main.transform.position.x +20, -3.2f);
             Instantiate(barikade, coordinates , Quaternion.identity);
-            timeTillObjectSpawn += reactionTime + (difficulty * 0.2f);
+            timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
             return;
         }
 
@@ -149,6 +137,7 @@ public class BackgroundCreatorScript : MonoBehaviour
         int n = (int)(randomValue * 3.499);
         PartType part = PartType.Wheel;
         SpawnItem(part);
+        timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
 
     }
 
@@ -157,7 +146,7 @@ public class BackgroundCreatorScript : MonoBehaviour
         // TODO add Script that adds a spawnObjectY infront of the train
         float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
 
-        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + 20, spawnObjectY), Quaternion.identity);
+        Instantiate(items[0], new Vector3(Camera.main.transform.position.x + Camera.main.orthographicSize*Camera.main.aspect*1.2f, spawnObjectY), Quaternion.identity);
     }
 
     public float GetObjectSpwanYRange()

@@ -1672,6 +1672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 1281507153208377129, guid: de223d75ebcdf8620b858ac6fe16d80c, type: 3}
+  - {fileID: 6766446778142654855, guid: 8a38d0f1c7033612284b12154440e01a, type: 3}
   spawnableObjects:
   - {fileID: 6473337412658022334, guid: cccefb60082062149a2b72e49ddb172c, type: 3}
   barikade: {fileID: 5716625892924741275, guid: 31a031c0b8ca3f3489f824ce010a3d82,

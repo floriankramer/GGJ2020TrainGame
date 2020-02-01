@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-    public static float trainSpeed = 4f;
+    public static float trainSpeed = 8f;
     public static float EngineLength = 7;
     public static float CarLength = 3;
 

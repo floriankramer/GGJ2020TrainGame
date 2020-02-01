@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BackgroundCreatorScript : MonoBehaviour
 {
+    
+
     public GameObject[] spawnableObjects;
 
     private float nextSpawnDistance;
@@ -38,7 +40,7 @@ public class BackgroundCreatorScript : MonoBehaviour
     void SpawnSomething()
     {
         // TODO add Script that selects a fitting Background Object from the List
-        GameObject spawnThis = spawnableObjects[Random.Range(0, 2)];
+        GameObject spawnThis = spawnableObjects[0];
 
         // TODO add Script that adds a spawnObjectY infront of the train
         float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);

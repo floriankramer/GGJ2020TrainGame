@@ -26,7 +26,12 @@ public class DamageRandomChance : MonoBehaviour
             {
                 Part randomPart = GetRandomPart();
                 if(randomPart != null)
-                    randomPart.Health -= Random.Range(damageMin, damageMax);
+                {
+                    float damage = Random.Range(damageMin, damageMax);
+                    Tracker.totalDamage += Time.deltaTime * damage;
+                    randomPart.Health -= damage;
+                }
+                    
             }
         }
     }

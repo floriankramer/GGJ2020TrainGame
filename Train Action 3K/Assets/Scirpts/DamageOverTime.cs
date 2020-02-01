@@ -21,6 +21,7 @@ public class DamageOverTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Tracker.totalDamage += Time.deltaTime * damagePerSecond;
         part.Health -= Time.deltaTime * damagePerSecond;
     }
 }

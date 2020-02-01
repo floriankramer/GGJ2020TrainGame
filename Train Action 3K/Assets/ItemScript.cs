@@ -8,8 +8,6 @@ public class ItemScript : MonoBehaviour
     public float health = 100;
 
     private BoxCollider2D boxCollider;
-    private Vector2 originPosition;
-    private bool foundStorage = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,18 +37,23 @@ public class ItemScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        originPosition = GetWorldPositionFromMouse();
+        //transform.Translate(10,0,0);
     }
 
     void OnMouseDrag()
     {
-        transform.position = GetWorldPositionFromMouse();
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        worldPoint.z = 0;
+        transform.position = worldPoint;
     }
 
     void OnMouseUp()
     {
-        Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        worldPoint.z = 0;
+        Collider2D[] hits = Physics2D.OverlapPointAll(worldPoint);
         Debug.unityLogger.LogWarning("Item", hits.Length);
+        bool foundStorage = false;
 
         foreach(Collider2D hit in hits )
         {
@@ -61,31 +64,19 @@ public class ItemScript : MonoBehaviour
                 transform.localPosition = new Vector3(0,0,0);
                 break;
             }
-            else if("Part" == hit.gameObject.tag)
+
+            if("Part" == hit.gameObject.tag)
             {
-                // TODO: Call repair method from part
-                hit.gameObject.GetComponent<Part>().health = 100;
+                
                 Consume(health);
-            }
-            else
-            {
-                transform.SetPositionAndRotation(originPosition,new Quaternion());
             }
         }
 
         if(!foundStorage)
         {
             // TODO: Where do we parent to?
-            //transform.SetParent(transform.parent.parent);
-            //Consume(health);
+            transform.SetParent(transform.parent.parent);
         }
-    }
-
-    private Vector2 GetWorldPositionFromMouse()
-    {
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        worldPoint.z = 0;
-        return worldPoint;
     }
 
 

@@ -29,6 +29,30 @@ PrefabInstance:
       propertyPath: repairedBy.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: partSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: dd524afa2b7635648967b97929ab28bb,
+        type: 3}
+    - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: partSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d67a3a7048e6a04c99861ea41ec5a82,
+        type: 3}
+    - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: partSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ed6a4e9d83dd62641a3ea1c83979990f,
+        type: 3}
+    - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
+        type: 3}
+      propertyPath: partSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: bb70980e60365db4c8faa6427cae61cb,
+        type: 3}
     - target: {fileID: 3166271919992441903, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: m_Sprite

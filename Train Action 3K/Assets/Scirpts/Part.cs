@@ -59,17 +59,15 @@ public class Part : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         damageParticleSystem = GetComponent<ParticleSystem>();
-
-        BuildFrame();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift)) {
-            ShowFrame();
+            spriteRenderer.color = Color.HSVToRGB(0.3f * (health / 100.0f), 1, 1);
         } else {
-            HideFrame();
+            spriteRenderer.color = Color.white;
         }
     }
 

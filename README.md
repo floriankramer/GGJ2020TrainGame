@@ -61,6 +61,7 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
 | Click                  | [lebaston100][lebaston100] | https://freesound.org/s/192273/ |
 
 The following icon is from The Noun Project and is licensed under [CC0 1.0][cc0-license]:
+
 | Title | Creator       | Link                                        |
 |-------|---------------|---------------------------------------------|
 | Steel | [James Keuning][james-keunig] | https://thenounproject.com/term/steel/9095/ |

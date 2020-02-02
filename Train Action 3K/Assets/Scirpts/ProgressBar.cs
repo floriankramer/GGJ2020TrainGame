@@ -23,6 +23,9 @@ public class ProgressBar : MonoBehaviour
 
 /// Progress is from 0 to 1
     public void SetProgress(float amount) {
+        if (progressBarImage == null) {
+            progressBarImage = GetComponent<Image>();
+        }
         progressBarImage.fillAmount = 1 - amount;
     }
 }

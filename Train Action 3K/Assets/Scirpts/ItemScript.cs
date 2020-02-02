@@ -21,10 +21,17 @@ public class ItemScript : MonoBehaviour
 
     private GameObject cantRepair = null;
 
+    private AudioSource audioSource;
+
+    public AudioClip PickupSound;
+    public AudioClip RepairingSound;
+
+    private static bool HasItemInHand = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,10 +55,15 @@ public class ItemScript : MonoBehaviour
                     if (colPart.CanRepair(itemType))
                     {
                         foundPartButCantRepair = false;
-                        if (counter == maxCounter)
-                        {
-                            OnStartRepair();
+
+                        if (counter == maxCounter || !audioSource.isPlaying) {
+                            audioSource.clip = RepairingSound;
+                            audioSource.loop = true;
+                            audioSource.Play();
                         }
+
+                        OnStartRepair();
+                        
                         counter -= Time.deltaTime;
 
                         progressBarBar.SetProgress(counter / maxCounter);
@@ -84,19 +96,24 @@ public class ItemScript : MonoBehaviour
 
     void OnStartRepair()
     {
-        progressBar = GameObject.Instantiate(ProgressBarTemplate, new Vector3(0, 0, 0), new Quaternion());
-        progressBar.transform.SetParent(GameObject.Find("Canvas").transform);
-        progressBar.transform.position = new Vector3(0, 0, -5);
-        progressBar.transform.localScale = new Vector3(0.2f, 0.2f, 1);
-        progressBar.transform.rotation = new Quaternion();
+        if (progressBar == null) {
+            progressBar = GameObject.Instantiate(ProgressBarTemplate, new Vector3(0, 0, 0), new Quaternion());
+            progressBar.transform.SetParent(GameObject.Find("Canvas").transform);
+            progressBar.transform.position = new Vector3(0, 0, -5);
+            progressBar.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+            progressBar.transform.rotation = new Quaternion();
 
-        progressBarBar = progressBar.GetComponent<ProgressBar>();
-        progressBarBar.target = gameObject;
+            progressBarBar = progressBar.GetComponent<ProgressBar>();
+            progressBarBar.target = gameObject;
+        }
 
     }
 
     void OnStopRepair()
     {
+        if (audioSource.clip == PickupSound) {
+            audioSource.Stop();
+        }
         if (progressBar != null)
         {
             Destroy(progressBar);
@@ -127,11 +144,20 @@ public class ItemScript : MonoBehaviour
 
     public void OnMouseDownAll()
     {
+        if (HasItemInHand) {
+            return;
+        }
+        HasItemInHand= true;
         following = true;
+        
+        audioSource.clip = PickupSound;
+        audioSource.loop = false;
+        audioSource.Play();
     }
 
     public void OnMouseUpAll()
     {
+        HasItemInHand = false;
         following = false;
 
         Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
@@ -153,6 +179,10 @@ public class ItemScript : MonoBehaviour
         }
         OnStopRepair();
         OnStopCantRepair();
+
+        audioSource.clip = PickupSound;
+        audioSource.loop = false;
+        audioSource.Play();
     }
 
     // If the Mouse is above this Object

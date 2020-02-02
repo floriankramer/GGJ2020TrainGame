@@ -60,7 +60,7 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
 | QUICK_SMASH_003.wav    | [JoelAudio][joelaudio]     | https://freesound.org/s/135463/ |
 | Click                  | [lebaston100][lebaston100] | https://freesound.org/s/192273/ |
 
-Icon from The Noun Project: steel icon by James Keuning, US
+Icon from The Noun Project: steel icon by James Keuning, US | https://thenounproject.com/term/steel/9095/#_=_ |
 
 #### License: [ Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][license-link]
 #### [Info about GGJ Legal & Policies][ggj-legal-link]

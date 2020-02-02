@@ -101,9 +101,9 @@ MonoBehaviour:
   partType: 3
   repairedBy: 01000000
   partSprites:
-  - {fileID: 21300000, guid: 0bab596a2eb5538428b13ccb6ba3e647, type: 3}
-  - {fileID: 21300000, guid: 0bab596a2eb5538428b13ccb6ba3e647, type: 3}
-  - {fileID: 21300000, guid: 0bab596a2eb5538428b13ccb6ba3e647, type: 3}
+  - {fileID: 21300000, guid: 7285bbabdfeb339448722c27b86dfbc1, type: 3}
+  - {fileID: 21300000, guid: 6eaf628fb4792b54385a16b9cd1d1481, type: 3}
+  - {fileID: 21300000, guid: 62740b9da0422fa468f5248e87fdac19, type: 3}
   - {fileID: 21300000, guid: 0bab596a2eb5538428b13ccb6ba3e647, type: 3}
   health: 100
   onDeathEvent:
@@ -112,6 +112,7 @@ MonoBehaviour:
   onHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+  BoxSprite: {fileID: 0}
 --- !u!114 &1582850967355417004
 MonoBehaviour:
   m_ObjectHideFlags: 0

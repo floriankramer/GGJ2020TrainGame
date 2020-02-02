@@ -18,7 +18,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.18, y: 1.76}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -37,19 +37,19 @@ PrefabInstance:
         type: 3}
       propertyPath: partSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 5d3c37532b033464ba705e19025e3a5d,
+      objectReference: {fileID: 21300000, guid: 25c089f5553ea0f4a8420e663df79e59,
         type: 3}
     - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: partSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 5d3c37532b033464ba705e19025e3a5d,
+      objectReference: {fileID: 21300000, guid: 0b80e794599de2346a02de550fd55dfd,
         type: 3}
     - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}
       propertyPath: partSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 5d3c37532b033464ba705e19025e3a5d,
+      objectReference: {fileID: 21300000, guid: 40328a55daa289e4d808081c2af86a85,
         type: 3}
     - target: {fileID: 585479906006606363, guid: 28e12ee1f9e29b14abde272f237f5c05,
         type: 3}

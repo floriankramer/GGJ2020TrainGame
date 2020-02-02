@@ -6,6 +6,7 @@ public class WheelScript : MonoBehaviour
 {
     public float constantSpeed = 0.0f;
     private bool isAlive = true;
+    public bool killOnDestroy = false;
 
     void Start()
     {
@@ -16,6 +17,8 @@ public class WheelScript : MonoBehaviour
     void onDeath()
     {
         isAlive = false;
+        if(killOnDestroy)
+            gameObject.GetComponent<Collider2D>().transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
     }
 
     // Update is called once per frame

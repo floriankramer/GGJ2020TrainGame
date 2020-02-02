@@ -45,7 +45,7 @@ Special thanks to [Chasing Carrots][carrots] for organizing and hosting the jam 
 - [MissMa][missma] - Role
 - [Anmax][anmax] - Role
 - [christeller][christeller] - Role
-- [DaragonGames][dragongames] - Role
+- [Stefan Gerstner][https://daragon-games.jimdofree.com/] - Programmer & Game Designer
 - [Baccus][baccus] - Role
 
 ### Additional Credits

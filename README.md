@@ -60,6 +60,8 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
 | QUICK_SMASH_003.wav    | [JoelAudio][joelaudio]     | https://freesound.org/s/135463/ |
 | Click                  | [lebaston100][lebaston100] | https://freesound.org/s/192273/ |
 
+Icon from The Noun Project: steel icon by James Keuning, US
+
 #### License: [ Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][license-link]
 #### [Info about GGJ Legal & Policies][ggj-legal-link]
 
@@ -88,6 +90,7 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
    [cgeffex]: <https://freesound.org/people/CGEffex/>
    [joelaudio]: <https://freesound.org/people/JoelAudio/>
    [lebaston100]: <https://freesound.org/people/lebaston100/>
+   [noun-project]: <https://thenounproject.com/term/steel/9095/#_=_>
 
    [license-link]: <https://creativecommons.org/licenses/by-nc-sa/4.0/>
    [ggj-legal-link]: <https://globalgamejam.org/legal-policies>

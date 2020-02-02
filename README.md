@@ -40,7 +40,7 @@ Special thanks to [Chasing Carrots][carrots] for organizing and hosting the jam 
 
 ### Team
 - [sMB][smb] - Role
-- [FlorianKramer][floriankramer] - Role
+- [Florian Kramer][floriankramer] - Programmer & Game Designer
 - [Oele][oele] - Role
 - [MissMa][missma] - Role
 - [Anmax][anmax] - Role

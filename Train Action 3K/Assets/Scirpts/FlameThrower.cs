@@ -7,6 +7,8 @@ public class FlameThrower : MonoBehaviour
 
     ParticleSystem particleSystem;
 
+    bool enabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,11 @@ public class FlameThrower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.F) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.E)) {
+            enabled = true;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && enabled)
         {
             if (!particleSystem.isPlaying)
             {

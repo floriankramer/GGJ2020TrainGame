@@ -19,6 +19,10 @@ public class Train : MonoBehaviour
 
     private bool isGameOver = false;
 
+    public float PercentPartsDefeat = 0.5f;
+
+    private int numParts = 0;
+    private int numPartsInit = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,15 +41,18 @@ public class Train : MonoBehaviour
 
             Part p = g.GetComponent<Part>();
             if (p != null) {
-                Debug.LogWarning("Found a part");
+                numParts += 1;
+                numPartsInit += 1;
                 if (!parts.ContainsKey(p.partType)) {
                     parts.Add(p.partType, new List<Part>());
                 }
                 parts[p.partType].Add(p);
                 p.onDeathEvent.AddListener(delegate() {
-                    Debug.LogWarning("A Part Died");
                     parts[p.partType].Remove(p);
+                    numParts -= 1;
                     if (parts[p.partType].Count == 0) {
+                        Defeat();
+                    } else if ((numParts + 0.0) / numPartsInit < PercentPartsDefeat) {
                         Defeat();
                     }
                 });

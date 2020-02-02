@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     // Changeable Values for Game Experience
     private static float maxTimeSinceBreak = 60f;
-    private static float reactionTime = 0.5f;
+    private static float reactionTime = 1f;
     private static float breakTime = 2.5f;
     private static float difficulty = 3f;
     
@@ -14,7 +14,24 @@ public class Spawner : MonoBehaviour
     private float timeTillObjectSpawn =2f;
     public GameObject[] items;
     public GameObject barikade;
-    
+
+    //
+    // All Variables for the Foreground
+    //
+
+    public GameObject[] foregroundObjects;
+
+    // Variables used to Spawn the Background
+    private float nextSpawnDistanceForeground;
+    private float spawnDistanceForeground;
+
+    // Minimal and Maximal Distance that can between two Background Objects 
+    private float minForegroundObjectDistance = 4f;
+    private float maxForegroundObjectDistance = 16f;
+
+    // Values for the Spawning on the Y-Axis
+    private float minForegroundObjectYValue = -5.9f;
+    private float maxForegroundObjectYValue = -5.1f;
 
     //
     // All Variables for the Background
@@ -52,6 +69,13 @@ public class Spawner : MonoBehaviour
             SpawnBackground();
             spawnDistanceBackground = 0;
         }
+
+        spawnDistanceForeground += Train.trainSpeed * Time.deltaTime;
+        if (nextSpawnDistanceForeground < spawnDistanceForeground)
+        {
+            SpawnForeground();
+            spawnDistanceForeground = 0;
+        }
     }
 
     void SpawnBackground()
@@ -70,6 +94,22 @@ public class Spawner : MonoBehaviour
         nextSpawnDistanceBackground = Random.Range(minSpawnDistance, maxSpawnDistance);
     }
 
+    void SpawnForeground()
+    {
+        int n = (int)Random.Range(0, foregroundObjects.Length - 0.1f);
+        GameObject spawnThis = foregroundObjects[n];
+
+        float spawnObjectY = Random.Range(minForegroundObjectYValue, maxForegroundObjectYValue);
+
+        // TODO Change 25 to value based on the Screen Size
+        Instantiate(spawnThis, new Vector3(Camera.main.transform.position.x + 25, spawnObjectY), Quaternion.identity);
+
+        float size = spawnThis.GetComponent<SpriteRenderer>().sprite.rect.size.x / 100;
+        float minSpawnDistance = size + minForegroundObjectDistance;
+        float maxSpawnDistance = minSpawnDistance + maxForegroundObjectDistance;
+        nextSpawnDistanceForeground = Random.Range(minSpawnDistance, maxSpawnDistance);
+    }
+
     void SpawnObject()
     {
 
@@ -86,7 +126,7 @@ public class Spawner : MonoBehaviour
         // Take a break if there wasn't a break for a long time
         if (Tracker.timeSinceBreak > maxTimeSinceBreak)
         {
-            timeTillObjectSpawn += breakTime;
+            timeTillObjectSpawn += breakTime + (difficulty*0.1f);
             Tracker.timeSinceBreak = 0;
             return;
         }
@@ -96,7 +136,7 @@ public class Spawner : MonoBehaviour
         // Add long Break
         if (randomValue < 0.05)
         {
-            timeTillObjectSpawn = 2* breakTime;
+            timeTillObjectSpawn = 2* breakTime + (difficulty * 0.1f);
             Tracker.timeSinceBreak = 0;
             return;
         }
@@ -104,7 +144,7 @@ public class Spawner : MonoBehaviour
         // Add short Break
         if (randomValue < 0.3)
         {
-            timeTillObjectSpawn = breakTime;
+            timeTillObjectSpawn = breakTime + (difficulty * 0.1f);
             Tracker.timeSinceBreak = 0;
             return;
         }

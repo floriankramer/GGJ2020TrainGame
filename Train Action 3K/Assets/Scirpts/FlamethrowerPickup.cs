@@ -18,15 +18,6 @@ public class FlamethrowerPickup : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        FlameThrower[] fts = collision.gameObject.GetComponentsInChildren<FlameThrower>();
-        foreach (FlameThrower ft in fts) {
-            ft.poweredFor += powerTime;
-        }
-        Destroy(gameObject);
-    }
-
-
     void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))

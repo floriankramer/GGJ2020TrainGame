@@ -14,9 +14,12 @@ public class ItemScript : MonoBehaviour
     float repairValue;
 
     public GameObject ProgressBarTemplate;
+    public GameObject CantRepairTemplate;
 
     private GameObject progressBar;
     private ProgressBar progressBarBar;
+
+    private GameObject cantRepair = null;
 
     // Start is called before the first frame update
     void Start()
@@ -35,13 +38,16 @@ public class ItemScript : MonoBehaviour
             Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
 
             bool foundPart = false;
+            bool foundPartButCantRepair = false;
             foreach (Collider2D hit in hits)
             {
                 Part colPart = hit.gameObject.GetComponent<Part>();
                 if (colPart != null)
                 {
+                    foundPartButCantRepair = true;
                     if (colPart.CanRepair(itemType))
                     {
+                        foundPartButCantRepair = false;
                         if (counter == maxCounter)
                         {
                             OnStartRepair();
@@ -66,6 +72,11 @@ public class ItemScript : MonoBehaviour
             {
                 counter = maxCounter;
                 OnStopRepair();
+            }
+            if (foundPartButCantRepair) {
+                OnCantRepair();
+            } else {
+                OnStopCantRepair();
             }
 
         }
@@ -92,6 +103,28 @@ public class ItemScript : MonoBehaviour
         }
         progressBar = null;
     }
+
+    void OnCantRepair() {
+        if (cantRepair == null) {
+            cantRepair = GameObject.Instantiate(CantRepairTemplate, new Vector3(0, 0, 0), new Quaternion());
+            cantRepair.transform.SetParent(GameObject.Find("Canvas").transform);
+            cantRepair.transform.position = new Vector3(0, 0, -5);
+            cantRepair.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+            cantRepair.transform.rotation = new Quaternion();
+
+            ProgressBar pb  = cantRepair.GetComponent<ProgressBar>();
+            pb.target = gameObject;
+            pb.SetProgress(1);
+        }
+    }
+
+    void OnStopCantRepair() {
+        if (cantRepair != null) {
+            Destroy(cantRepair);
+        }
+        cantRepair = null;
+    }
+
 
     public void OnMouseDownAll()
     {
@@ -120,6 +153,7 @@ public class ItemScript : MonoBehaviour
             transform.localPosition = new Vector3(0, 0, 0);
         }
         OnStopRepair();
+        OnStopCantRepair();
     }
 
     // If the Mouse is above this Object

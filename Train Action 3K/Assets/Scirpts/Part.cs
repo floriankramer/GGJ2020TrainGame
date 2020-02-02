@@ -19,6 +19,7 @@ public class Part : MonoBehaviour
     private ParticleSystem particleSystem;
 
     public UnityEvent onDeathEvent;
+    public UnityEvent onHealthChangedEvent;
 
     public float Health
     {
@@ -34,6 +35,9 @@ public class Part : MonoBehaviour
             int oldPartIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));
             // TODO: Check if health is 0.0f and start a fancy explosion animation!
             this.health = value;
+            if(this.onHealthChangedEvent != null)
+                this.onHealthChangedEvent.Invoke();
+
             int partIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));
             if (partIndex < oldPartIndex) {
                 particleSystem.Play();

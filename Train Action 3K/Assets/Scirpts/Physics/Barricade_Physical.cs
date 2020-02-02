@@ -6,6 +6,7 @@ public class Barricade_Physical : MonoBehaviour
 {
     public float damage = 5.0f;
     public float damagePropagationProbability = 50.0f;
+    public int durability = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,9 @@ public class Barricade_Physical : MonoBehaviour
                     if(Random.Range(0.0f, 100.0f) < damagePropagationProbability)
                     {
                         parts[i].Health -= damage;
+                        this.durability--;
+                        if (this.durability <= 0)
+                            Destroy(gameObject);
                         break;
                     }
                 }

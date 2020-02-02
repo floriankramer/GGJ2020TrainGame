@@ -793,7 +793,7 @@ PrefabInstance:
     - target: {fileID: 4259949339789650786, guid: e2b40415bc944d04d95c435087946f93,
         type: 3}
       propertyPath: m_Name
-      value: SuperTrain
+      value: Train
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b40415bc944d04d95c435087946f93, type: 3}

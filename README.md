@@ -58,6 +58,7 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
 | Synthetic Steam Engine | [rudicangiotti][rudicangiotti] | https://freesound.org/s/271382/ |
 | Train destruction.flac | [CGEffex][cgeffex]       | https://freesound.org/s/94178/  |
 | QUICK_SMASH_003.wav    | [JoelAudio][joelaudio]     | https://freesound.org/s/135463/ |
+| Click                  | [lebaston100][lebaston100] | https://freesound.org/s/192273/ |
 
 #### License: [ Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][license-link]
 #### [Info about GGJ Legal & Policies][ggj-legal-link]
@@ -86,6 +87,7 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
    [rudicangiotti]: <https://freesound.org/people/rudicangiotti/>
    [cgeffex]: <https://freesound.org/people/CGEffex/>
    [joelaudio]: <https://freesound.org/people/JoelAudio/>
+   [lebaston100]: <https://freesound.org/people/lebaston100/>
 
    [license-link]: <https://creativecommons.org/licenses/by-nc-sa/4.0/>
    [ggj-legal-link]: <https://globalgamejam.org/legal-policies>

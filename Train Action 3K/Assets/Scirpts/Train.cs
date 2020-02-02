@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-    public static float trainSpeed = 8f;
+    private float trainStartSpeed = 8f;
+    public static float trainSpeed;
     public static float EngineLength = 7;
     public static float CarLength = 3;
 
@@ -22,6 +23,7 @@ public class Train : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        trainSpeed = trainStartSpeed;
         List<GameObject> toProcess = new List<GameObject>();
         toProcess.Add(gameObject);
 

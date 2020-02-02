@@ -6,32 +6,35 @@ public class BackgroundCreatorScript : MonoBehaviour
 {
     // Changeable Values for Game Experience
     private static float maxTimeSinceBreak = 60f;
-    private static float reactionTime = 2f;
-    private static float breakTime = 2f;
-    private static float difficulty = 6f;
+    private static float reactionTime = 0.5f;
+    private static float breakTime = 2.5f;
+    private static float difficulty = 3f;
     
+    // for items and materials
     private float timeTillObjectSpawn =2f;
+    public GameObject[] items;
+    public GameObject barikade;
+    
 
+    //
+    // All Variables for the Background
+    //
 
     public GameObject[] backgroundObjects;
 
-    public GameObject[] items;
-    public GameObject[] spawnableObjects;
-    public GameObject barikade;
-
-    private float nextSpawnDistance;
-    private float spawnDistance;
+    // Variables used to Spawn the Background
+    private float nextSpawnDistanceBackground;
+    private float spawnDistanceBackground;
 
     // Minimal and Maximal Distance that can between two Background Objects 
-    private float minObjectDistance = 0.5f;
-    private float maxObjectDistance = 6f;
+    private float minBackgroundObjectDistance = 0.5f;
+    private float maxBackgroundObjectDistance = 6f;
 
     // Values for the Spawning on the Y-Axis
-    private float minObjectYValue = -1;
-    private float maxObjectYValue = 1.8f;
+    private float minBackgroundObjectYValue = -1;
+    private float maxBackgroundObjectYValue = 1.5f;
 
-
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -43,39 +46,28 @@ public class BackgroundCreatorScript : MonoBehaviour
             SpawnObject();
         }
 
-
-
-
-
-
-
-
-
-
-
-        spawnDistance += Train.trainSpeed * Time.deltaTime;
-        if (nextSpawnDistance < spawnDistance)
+        spawnDistanceBackground += Train.trainSpeed * Time.deltaTime;
+        if (nextSpawnDistanceBackground < spawnDistanceBackground)
         {
             SpawnBackground();
-            spawnDistance = 0;
+            spawnDistanceBackground = 0;
         }
     }
 
     void SpawnBackground()
     {
-        // TODO add Script that selects a fitting Background Object from the List
-        GameObject spawnThis = spawnableObjects[0];
+        int n = (int)Random.Range(0, backgroundObjects.Length - 0.1f);
+        GameObject spawnThis = backgroundObjects[n];
 
-        // TODO add Script that adds a spawnObjectY infront of the train
-        float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
+        float spawnObjectY = Random.Range(minBackgroundObjectYValue, maxBackgroundObjectYValue);
 
-        // TODO Change 15 to value based on the Screen Size
-        Instantiate(spawnThis, new Vector3(Camera.main.transform.position.x + 15, spawnObjectY), Quaternion.identity);
+        // TODO Change 25 to value based on the Screen Size
+        Instantiate(spawnThis, new Vector3(Camera.main.transform.position.x + 25, spawnObjectY), Quaternion.identity);
 
         float size = spawnThis.GetComponent<SpriteRenderer>().sprite.rect.size.x/100;
-        float minSpawnDistance = size + minObjectDistance;
-        float maxSpawnDistance = minSpawnDistance + maxObjectDistance;
-        nextSpawnDistance = Random.Range(minSpawnDistance, maxSpawnDistance);
+        float minSpawnDistance = size + minBackgroundObjectDistance;
+        float maxSpawnDistance = minSpawnDistance + maxBackgroundObjectDistance;
+        nextSpawnDistanceBackground = Random.Range(minSpawnDistance, maxSpawnDistance);
     }
 
     void SpawnObject()
@@ -85,9 +77,9 @@ public class BackgroundCreatorScript : MonoBehaviour
         /*if (Tracker.totalDamage > 700)
         {
             //Spawn a Item based on a part type
-            SpawnItem(Tracker.comparePartTypeHealth());
+            SpawnNeededMaterial(Tracker.comparePartTypeHealth());
             timeTillObjectSpawn += reactionTime + (difficulty*0.2f);
-            Tracker.totalDamage -= 50;
+            Tracker.totalDamage -= 100;
             return;
         }*/
 
@@ -120,8 +112,8 @@ public class BackgroundCreatorScript : MonoBehaviour
         // Add wanted Item
         if (randomValue < 0.3+ (difficulty/100))
         {
-            SpawnItem(Tracker.comparePartTypeHealth());
-            timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
+            SpawnNeededMaterial(Tracker.comparePartTypeHealth());
+            timeTillObjectSpawn = reactionTime + (difficulty * 0.1f);
             return;
         }
 
@@ -130,43 +122,29 @@ public class BackgroundCreatorScript : MonoBehaviour
         {
             Vector3 coordinates = new Vector3(Camera.main.transform.position.x +20, -3.85f);
             Instantiate(barikade, coordinates , Quaternion.identity);
-            timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
+            timeTillObjectSpawn = reactionTime + (difficulty * 0.1f);
             return;
         }
 
         // Add Random Item 
-        int n = (int)(randomValue * 3.999);
-        PartType part = PartType.Wheel;
-        SpawnItem(part);
+        SpawnRandomItem();
         timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
 
     }
 
-    public void SpawnItem(PartType part)
+    public void SpawnRandomItem()
     {
         // TODO add Script that adds a spawnObjectY infront of the train
-        float spawnObjectY = Random.Range(minObjectYValue, maxObjectYValue);
-
+        float spawnObjectY = Random.Range(minBackgroundObjectYValue, maxBackgroundObjectYValue);
         int n = (int)Random.Range(0, items.Length - 0.1f);
         Instantiate(items[n], new Vector3(Camera.main.transform.position.x + Camera.main.orthographicSize*Camera.main.aspect*1.2f, spawnObjectY), Quaternion.identity);
     }
 
-    public float GetObjectSpwanYRange()
+    public void SpawnNeededMaterial(PartType part)
     {
-        return 2;
-    }
-    
-
-    public void EncounterAnimalName()
-    {
-        object[] textures = Resources.LoadAll("Art/Animals/Encounters", typeof(Sprite));
-
-        int n = (int)Random.Range(0, textures.Length - 0.1f);
-        Sprite s = (Sprite)textures[n];
-
-
+        SpawnRandomItem();
     }
 
-
+    //
 
 }

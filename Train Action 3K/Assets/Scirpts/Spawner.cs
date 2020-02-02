@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundCreatorScript : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     // Changeable Values for Game Experience
     private static float maxTimeSinceBreak = 60f;
@@ -134,10 +134,8 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     public void SpawnRandomItem()
     {
-        // TODO add Script that adds a spawnObjectY infront of the train
-        float spawnObjectY = Random.Range(minBackgroundObjectYValue, maxBackgroundObjectYValue);
         int n = (int)Random.Range(0, items.Length - 0.1f);
-        Instantiate(items[n], new Vector3(Camera.main.transform.position.x + Camera.main.orthographicSize*Camera.main.aspect*1.2f, spawnObjectY), Quaternion.identity);
+        Instantiate(items[n], new Vector3(Camera.main.transform.position.x + Camera.main.orthographicSize*Camera.main.aspect*1.2f, GetItemYSpawnpoint()), Quaternion.identity);
     }
 
     public void SpawnNeededMaterial(PartType part)
@@ -145,6 +143,15 @@ public class BackgroundCreatorScript : MonoBehaviour
         SpawnRandomItem();
     }
 
-    //
+    public float GetItemYSpawnpoint()
+    {
+        float value = Random.value * -4 - 0.5f;
+        if (value < -2)
+        {
+            value -= 3.5f;
+        }
+        return value;
+    }
+
 
 }

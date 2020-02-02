@@ -73,6 +73,7 @@ public class ItemScript : MonoBehaviour
                         {
                             colPart.Repair(itemType, 100);
                             OnStopRepair();
+                            HasItemInHand = false;
                             Destroy(gameObject);
                         }
                         break;
@@ -149,7 +150,7 @@ public class ItemScript : MonoBehaviour
         }
         HasItemInHand= true;
         following = true;
-        
+
         audioSource.clip = PickupSound;
         audioSource.loop = false;
         audioSource.Play();

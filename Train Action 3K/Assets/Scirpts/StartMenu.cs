@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    bool physicsEnabled = false;
+
     public void StartMen()
     {
         SceneManager.LoadScene(0);
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        if(physicsEnabled)
+            SceneManager.LoadScene(5);
+        else
+            SceneManager.LoadScene(1);
     }
     public void WatchTutorial()
     {
@@ -34,5 +39,9 @@ public class StartMenu : MonoBehaviour
     {
         Debug.Log("Quit!");
         Application.Quit();
+    }
+    public void OnPhysicsToggle(bool value)
+    {
+        this.physicsEnabled = value;
     }
 }

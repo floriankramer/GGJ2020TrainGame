@@ -39,7 +39,7 @@ Our game adheres to the theme by requiring players to constantly repair the trai
 Special thanks to [Chasing Carrots][carrots] for organizing and hosting the jam site at [Stadtbibliothek Stuttgart][bib].
 
 ### Team
-- [sMB][smb] - Role
+- [sMB][smb] - Programmer & Technical Artist
 - [Florian Kramer][floriankramer] - Programmer & Game Designer
 - [Oele][oele] - Role
 - [MissMa][missma] - Role

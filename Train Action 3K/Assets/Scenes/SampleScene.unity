@@ -6430,6 +6430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390c171b04c86c245857469eb812e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundObjects:
+  - {fileID: 6473337412658022334, guid: cccefb60082062149a2b72e49ddb172c, type: 3}
+  - {fileID: 5964152199100873082, guid: 7c13e34368fedeb46bad96a74d6a1292, type: 3}
+  - {fileID: 7605962015687240449, guid: e6e45fa11c183614194705b58e6060f6, type: 3}
+  - {fileID: 5147768769421184099, guid: b5632edc31c5fd24ab4e9f82fbad1a86, type: 3}
   items:
   - {fileID: 1281507153208377129, guid: de223d75ebcdf8620b858ac6fe16d80c, type: 3}
   - {fileID: 6766446778142654855, guid: 8a38d0f1c7033612284b12154440e01a, type: 3}

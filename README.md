@@ -43,9 +43,9 @@ Special thanks to [Chasing Carrots][carrots] for organizing and hosting the jam 
 - [Florian Kramer][floriankramer] - Programmer & Game Designer
 - [Oele][oele] - Role
 - [MissMa][missma] - Role
-- [Anmax][anmax] - Role
+- [Anmax][anmax] - Developer and General Stuff
 - [christeller][christeller] - Role
-- [Stefan Gerstner][https://daragon-games.jimdofree.com/] - Programmer & Game Designer
+- [Stefan Gerstner][stefan] - Programmer & Game Designer
 - [Baccus][baccus] - Role
 
 ### Additional Credits
@@ -84,9 +84,9 @@ The following icon is from The Noun Project and is licensed under [CC0 1.0][cc0-
    [floriankramer]: <>
    [oele]: <>
    [missma]: <>
-   [anmax]: <>
+   [anmax]: <https://twitter.com/Anmax_original>
    [christeller]: <>
-   [dragongames]: <>
+   [stefan]: <https://daragon-games.jimdofree.com/>
    [baccus]: <>
 
    [bensound]: <https://www.bensound.com/>

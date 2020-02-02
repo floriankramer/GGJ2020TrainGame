@@ -5,29 +5,29 @@ using UnityEngine;
 public class FlameThrower : MonoBehaviour
 {
 
-    ParticleSystem particleSystem;
+    ParticleSystem flameParticleSystem;
 
-    bool enabled = false;
+    bool manualEnabled = false;
     public float poweredFor = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
+        flameParticleSystem = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.F) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.E)) {
-            enabled = true;
+            manualEnabled = true;
         }
 
-        if ((Input.GetKey(KeyCode.Space) && enabled) || poweredFor > 0)
+        if ((Input.GetKey(KeyCode.Space) && manualEnabled) || poweredFor > 0)
         {
-            if (!particleSystem.isPlaying)
+            if (!flameParticleSystem.isPlaying)
             {
-                particleSystem.Play();
+                flameParticleSystem.Play();
             }
 
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, new Vector2(1, 0), 5);
@@ -42,7 +42,7 @@ public class FlameThrower : MonoBehaviour
         }
         else
         {
-            particleSystem.Stop();
+            flameParticleSystem.Stop();
         }
 
         if (poweredFor > 0) {

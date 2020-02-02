@@ -16,10 +16,14 @@ public class Part : MonoBehaviour
     private float health = 100.0f;
 
     private SpriteRenderer spriteRenderer;
-    private ParticleSystem particleSystem;
+    private ParticleSystem damageParticleSystem;
 
     public UnityEvent onDeathEvent;
     public UnityEvent onHealthChangedEvent;
+
+    private GameObject frameGameObject;
+
+    public Sprite BoxSprite;
 
     public float Health
     {
@@ -40,7 +44,7 @@ public class Part : MonoBehaviour
 
             int partIndex = Mathf.Min(3, (int)Mathf.Ceil(this.health /  (100 / 3)));
             if (partIndex < oldPartIndex) {
-                particleSystem.Play();
+                damageParticleSystem.Play();
                 PlayBreakingSound();
             }
             spriteRenderer.sprite = partSprites[partIndex];
@@ -54,13 +58,24 @@ public class Part : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        particleSystem = GetComponent<ParticleSystem>();
+        damageParticleSystem = GetComponent<ParticleSystem>();
+
+        BuildFrame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            ShowFrame();
+        } else {
+            HideFrame();
+        }
+    }
+
+
+    void OnRenderObject() {
+
     }
 
     public bool Repair(ItemType type, float amount) {
@@ -83,5 +98,58 @@ public class Part : MonoBehaviour
     private void PlayBreakingSound()
     {
         this.GetComponent<AudioSource>().Play();
+    }
+
+    private void BuildFrame() {
+        frameGameObject = new GameObject();
+        frameGameObject.transform.parent = gameObject.transform;
+        frameGameObject.transform.localPosition = new Vector3(0, 0, 0);
+        frameGameObject.transform.localScale = new Vector3(1, 1, 1);
+        frameGameObject.transform.localRotation = new Quaternion();
+
+        // frameGameObject.AddComponent<LineRenderer>();
+        // LineRenderer lr = frameGameObject.GetComponent<LineRenderer>();
+        // lr.useWorldSpace = false;
+
+        Collider2D collider = GetComponent<Collider2D>();
+        float width = collider.bounds.max.x - collider.bounds.min.x;
+        float height = collider.bounds.max.y - collider.bounds.min.y;
+
+
+        frameGameObject.AddComponent<SpriteRenderer>();
+        SpriteRenderer renderer = frameGameObject.GetComponent<SpriteRenderer>();
+
+        renderer.sprite = BoxSprite;
+        renderer.sortingLayerName = "UI";
+        renderer.size = new Vector2(width, height);
+
+        // lr.positionCount = 5;
+        // lr.SetPosition(0, new Vector3(-w2, -h2, 0));
+        // lr.SetPosition(1, new Vector3(w2, -h2, 0));
+        // lr.SetPosition(2, new Vector3(w2, h2, 0));
+        // lr.SetPosition(3, new Vector3(-w2, h2, 0));
+        // lr.SetPosition(4, new Vector3(-w2, -h2, 0));
+
+        // lr.widthMultiplier = 0.03f;
+
+        // lr.startColor = Color.white;
+        // lr.endColor = Color.white;
+
+        // lr.material = new Material(Shader.Find("Unlit/Color"));
+        // lr.material.color = Color.white;
+
+        // lr.sortingLayerName = "UI";
+
+        // lr.enabled = false;
+    }
+
+    private void ShowFrame() {
+        SpriteRenderer renderer = frameGameObject.GetComponent<SpriteRenderer>();
+        renderer.enabled = true;
+    }
+
+    private void HideFrame() {
+        SpriteRenderer renderer = frameGameObject.GetComponent<SpriteRenderer>();
+        renderer.enabled = false;
     }
 }

@@ -114,7 +114,6 @@ public class ItemScript : MonoBehaviour
 
             ProgressBar pb  = cantRepair.GetComponent<ProgressBar>();
             pb.target = gameObject;
-            pb.SetProgress(1);
         }
     }
 

@@ -8,6 +8,7 @@ public class FlameThrower : MonoBehaviour
     ParticleSystem particleSystem;
 
     bool enabled = false;
+    public float poweredFor = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class FlameThrower : MonoBehaviour
             enabled = true;
         }
 
-        if (Input.GetKey(KeyCode.Space) && enabled)
+        if ((Input.GetKey(KeyCode.Space) && enabled) || poweredFor > 0)
         {
             if (!particleSystem.isPlaying)
             {
@@ -42,6 +43,10 @@ public class FlameThrower : MonoBehaviour
         else
         {
             particleSystem.Stop();
+        }
+
+        if (poweredFor > 0) {
+            poweredFor -= Time.deltaTime;
         }
     }
 }

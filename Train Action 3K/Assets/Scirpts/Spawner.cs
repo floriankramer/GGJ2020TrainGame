@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     private static float maxTimeSinceBreak = 60f;
     private static float reactionTime = 1f;
     private static float breakTime = 2.5f;
-    private static float difficulty = 3f;
+    private static float difficulty = 10f;
     
     // for items and materials
     private float timeTillObjectSpawn =2f;
@@ -51,10 +51,17 @@ public class Spawner : MonoBehaviour
     private float minBackgroundObjectYValue = -1;
     private float maxBackgroundObjectYValue = 1.5f;
 
-    
+    void Start()
+    {
+        difficulty = 10;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+        difficulty -= Time.deltaTime/20;
+
         Tracker.timeSinceBreak += Time.deltaTime;
         timeTillObjectSpawn -= Time.deltaTime;
 

@@ -4,7 +4,7 @@ Picture
 
 Train Action 3K is a game in which you have to maintain your train so it never stops. Unfortunately it is constantly getting damage and you have to repair the slowly breaking parts in order to achieve the longest distance. The items which are needed for the repair jobs, are spawned along the tracks, and it is even possible to save some for later on one of the wagons. Obstacles on the tracks are causing extra damage.
 
-[Click here to play][game-website] Upload on Heroku?
+[Click here to play][game-website]
 
 ## How to play
 Tutorial picture
@@ -63,7 +63,7 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
 #### License: [ Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][license-link]
 #### [Info about GGJ Legal & Policies][ggj-legal-link]
 
-   [game-website]: <https://www.google.com>
+   [game-website]: <https://mi9.moe/trainaction3k/>
    [unity]: <https://unity.com/>
    [vscode]: <https://code.visualstudio.com/>
    [audacity]: <https://www.audacity.de/>

@@ -25,6 +25,8 @@ public class Part : MonoBehaviour
 
     public Sprite BoxSprite;
 
+    bool ShowHealth = false;
+
     public float Health
     {
         get
@@ -64,7 +66,10 @@ public class Part : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Health > 0) {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            ShowHealth = !ShowHealth;
+        }
+        if (ShowHealth && Health > 0) {
             spriteRenderer.color = Color.HSVToRGB(0.3f * (health / 100.0f), 1, 1);
         } else {
             spriteRenderer.color = Color.white;

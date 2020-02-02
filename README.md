@@ -1,13 +1,13 @@
 # TrainAction3K
 
-Picture
+![Logo][mainmenupic]
 
 Train Action 3K is a game in which you have to maintain your train so it never stops. Unfortunately it is constantly getting damage and you have to repair the slowly breaking parts in order to achieve the longest distance. The items which are needed for the repair jobs, are spawned along the tracks, and it is even possible to save some for later on one of the wagons. Obstacles on the tracks are causing extra damage.
 
 [Click here to play][game-website]
 
 ## How to play
-Tutorial picture
+![Tutorial Picture][tutorialpic]
 
   1. Get as far as you can with your train. It takes damage on the way and you will need to repair it in order to make it
   2. The damage of five different goups of parts is shown here for both the train and the waggon. If one group of parts is completely broken at the waggon, it's lost. If one group of the train is completely broken the journey ends.
@@ -60,11 +60,17 @@ The following sounds are taken from [freesound.org][freesound] and are licensed 
 | QUICK_SMASH_003.wav    | [JoelAudio][joelaudio]     | https://freesound.org/s/135463/ |
 | Click                  | [lebaston100][lebaston100] | https://freesound.org/s/192273/ |
 
-Icon from The Noun Project: steel icon by James Keuning, US
+The following icon is from The Noun Project and is licensed under [CC0 1.0][cc0-license]:
+
+| Title | Creator       | Link                                        |
+|-------|---------------|---------------------------------------------|
+| Steel | [James Keuning][james-keunig] | https://thenounproject.com/term/steel/9095/ |
 
 #### License: [ Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][license-link]
 #### [Info about GGJ Legal & Policies][ggj-legal-link]
 
+   [mainmenupic]: <https://github.com/floriankramer/GGJ2020TrainGame/blob/master/Train%20Action%203K/Assets/Graphics/MainMenu.png>
+   [tutorialpic]: <https://github.com/floriankramer/GGJ2020TrainGame/blob/master/Train%20Action%203K/Assets/Graphics/Screenshots/Tutorial.png>
    [game-website]: <https://mi9.moe/trainaction3k/>
    [unity]: <https://unity.com/>
    [vscode]: <https://code.visualstudio.com/>
@@ -90,7 +96,9 @@ Icon from The Noun Project: steel icon by James Keuning, US
    [cgeffex]: <https://freesound.org/people/CGEffex/>
    [joelaudio]: <https://freesound.org/people/JoelAudio/>
    [lebaston100]: <https://freesound.org/people/lebaston100/>
-   [noun-project]: <https://thenounproject.com/term/steel/9095/#_=_>
+
+   [cc0-license]: <https://creativecommons.org/publicdomain/zero/1.0/>
+   [james-keunig]: <https://thenounproject.com/jmkeuning>
 
    [license-link]: <https://creativecommons.org/licenses/by-nc-sa/4.0/>
    [ggj-legal-link]: <https://globalgamejam.org/legal-policies>

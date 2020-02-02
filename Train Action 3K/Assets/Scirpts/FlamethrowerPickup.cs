@@ -25,4 +25,19 @@ public class FlamethrowerPickup : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            FlameThrower[] fts = GameObject.Find("Train").GetComponentsInChildren<FlameThrower>();
+
+            foreach (FlameThrower ft in fts)
+            {
+                ft.poweredFor += powerTime;
+            }
+            Destroy(gameObject);
+        }
+    }
 }

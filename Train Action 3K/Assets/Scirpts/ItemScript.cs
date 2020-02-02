@@ -33,7 +33,6 @@ public class ItemScript : MonoBehaviour
             transform.position = GetWorldPositionFromMouse();
 
             Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
-            Debug.Log("found parts: " + hits.Length);
 
             bool foundPart = false;
             foreach (Collider2D hit in hits)
@@ -41,13 +40,12 @@ public class ItemScript : MonoBehaviour
                 Part colPart = hit.gameObject.GetComponent<Part>();
                 if (colPart != null)
                 {
-                    Debug.Log("Found a part");
                     if (colPart.CanRepair(itemType))
                     {
-                        if (counter == maxCounter) {
+                        if (counter == maxCounter)
+                        {
                             OnStartRepair();
                         }
-                        Debug.Log("Repairing" + counter);
                         counter -= Time.deltaTime;
 
                         progressBarBar.SetProgress(counter / maxCounter);
@@ -73,7 +71,8 @@ public class ItemScript : MonoBehaviour
         }
     }
 
-    void OnStartRepair() {
+    void OnStartRepair()
+    {
         progressBar = GameObject.Instantiate(ProgressBarTemplate, new Vector3(0, 0, 0), new Quaternion());
         progressBar.transform.SetParent(GameObject.Find("Canvas").transform);
         progressBar.transform.position = new Vector3(0, 0, -5);
@@ -85,44 +84,48 @@ public class ItemScript : MonoBehaviour
 
     }
 
-    void OnStopRepair() {
-        Destroy(progressBar);
+    void OnStopRepair()
+    {
+        if (progressBar != null)
+        {
+            Destroy(progressBar);
+        }
+        progressBar = null;
+    }
+
+    public void OnMouseDownAll()
+    {
+        following = true;
+    }
+
+    public void OnMouseUpAll()
+    {
+        following = false;
+
+        Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.gameObject.tag == "StorageRoom")
+            {
+                if (hit.transform.childCount == 0)
+                {
+                    transform.parent = hit.transform;
+                    isCollected = true;
+                }
+            }
+        }
+        if (isCollected)
+        {
+            transform.localPosition = new Vector3(0, 0, 0);
+        }
+        OnStopRepair();
     }
 
     // If the Mouse is above this Object
     void OnMouseOver()
     {
-        // and it is clicked
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Start following the mouse
-            following = true;
 
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            following = false;
-
-            Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
-
-            foreach (Collider2D hit in hits)
-            {
-                if (hit.gameObject.tag == "StorageRoom")
-                {
-                    if (hit.transform.childCount == 0)
-                    {
-                        transform.parent = hit.transform;
-                        isCollected = true;
-                    }
-                }
-            }
-            if (isCollected)
-            {
-                transform.localPosition = new Vector3(0, 0, 0);
-            }
-
-        }
     }
 
     private Vector3 GetWorldPositionFromMouse()

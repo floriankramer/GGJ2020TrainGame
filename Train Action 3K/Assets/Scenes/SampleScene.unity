@@ -1494,6 +1494,9 @@ MonoBehaviour:
   - {fileID: 4618169995954542166, guid: d8ab73dfae3e63e0d94c76b41c013fc0, type: 3}
   barikade: {fileID: 5716625892924741275, guid: 31a031c0b8ca3f3489f824ce010a3d82,
     type: 3}
+  foregroundObjects:
+  - {fileID: 5964152199100873082, guid: 7c13e34368fedeb46bad96a74d6a1292, type: 3}
+  - {fileID: 5147768769421184099, guid: b5632edc31c5fd24ab4e9f82fbad1a86, type: 3}
   backgroundObjects:
   - {fileID: 6473337412658022334, guid: cccefb60082062149a2b72e49ddb172c, type: 3}
   - {fileID: 5964152199100873082, guid: 7c13e34368fedeb46bad96a74d6a1292, type: 3}
@@ -1553,7 +1556,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 8b6bfbbf386d75c408c380bc2fa59c7f, type: 3}
     movementFactor: 1
     yPos: 6.487939
-    overlap: 0.1
+    overlap: 0.2
     yStretch: 1
   - sprite: {fileID: 21300000, guid: a7c424abd21590ce694f6f0d00b5fdd0, type: 3}
     movementFactor: 0.4
@@ -1578,7 +1581,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 8974ddca7543caca7b2d2dd281bb1c7f, type: 3}
     movementFactor: 1
     yPos: -5.02
-    overlap: 0.1
+    overlap: 0.2
     yStretch: 3.0965
   - sprite: {fileID: 21300000, guid: 86b7dc180ee1b60009b228e762fa8657, type: 3}
     movementFactor: 1

@@ -84,6 +84,8 @@ public class Train : MonoBehaviour
         o.transform.localScale = new Vector3(1, 1, 1);
         o.transform.rotation = new Quaternion(0, 0, 0, 1);
         isGameOver = true;
+
+        Spawner.DebugTime();
     }
 
     private void HandleAudio()

@@ -21,7 +21,10 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
-
+    public void CheckReferences()
+    {
+        SceneManager.LoadScene(4);
+    }
     public void Retry()
     {
         string sceneName = SceneManager.GetActiveScene().name;

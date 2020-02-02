@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public static float debugBreakTime;
+    public static float debugReactTime;
+
     // Changeable Values for Game Experience
     private static float maxTimeSinceBreak = 60f;
     private static float reactionTime = 1f;
@@ -135,7 +138,7 @@ public class Spawner : MonoBehaviour
         {
             timeTillObjectSpawn += breakTime + (difficulty*0.1f);
             Tracker.timeSinceBreak = 0;
-            Debug.Log("Break");
+            debugBreakTime += breakTime + (difficulty * 0.1f);
             return;
         }
 
@@ -144,18 +147,18 @@ public class Spawner : MonoBehaviour
         // Add long Break
         if (randomValue < 0.05)
         {
-            timeTillObjectSpawn = 2* breakTime + (difficulty * 0.1f);
+            timeTillObjectSpawn = 2* breakTime + (difficulty * 0.05f);
             Tracker.timeSinceBreak = 0;
-            Debug.Log("Break");
+            debugBreakTime += 2* breakTime + (difficulty * 0.05f);
             return;
         }
 
         // Add short Break
         if (randomValue < 0.3)
         {
-            timeTillObjectSpawn = breakTime + (difficulty * 0.1f);
+            timeTillObjectSpawn = breakTime + (difficulty * 0.05f);
             Tracker.timeSinceBreak = 0;
-            Debug.Log("Break");
+            debugBreakTime += breakTime + (difficulty * 0.05f);
             return;
         }
 
@@ -163,7 +166,8 @@ public class Spawner : MonoBehaviour
         if (randomValue < 0.3+ (difficulty/100))
         {
             SpawnNeededMaterial(Tracker.comparePartTypeHealth());
-            timeTillObjectSpawn = reactionTime + (difficulty * 0.1f);
+            timeTillObjectSpawn = reactionTime + (difficulty * 0.05f);
+            debugReactTime += reactionTime + (difficulty * 0.05f);
             return;
         }
 
@@ -173,19 +177,19 @@ public class Spawner : MonoBehaviour
             Vector3 coordinates = new Vector3(Camera.main.transform.position.x +20, -3.85f);
             Instantiate(barikade, coordinates , Quaternion.identity);
             timeTillObjectSpawn = reactionTime + (difficulty * 0.1f);
-            Debug.Log("Barikade");
+            debugReactTime += reactionTime + (difficulty * 0.1f);
             return;
         }
 
         // Add Random Item 
         SpawnRandomItem();
-        timeTillObjectSpawn = reactionTime + (difficulty * 0.2f);
+        timeTillObjectSpawn = reactionTime + (difficulty * 0.1f);
+        debugReactTime += reactionTime + (difficulty * 0.1f);
 
     }
 
     public void SpawnRandomItem()
     {
-        Debug.Log("Item");
         int n = (int)Random.Range(0, items.Length - 0.1f);
         Instantiate(items[n], new Vector3(Camera.main.transform.position.x + Camera.main.orthographicSize*Camera.main.aspect*1.2f, GetItemYSpawnpoint()), Quaternion.identity);
     }
@@ -205,5 +209,10 @@ public class Spawner : MonoBehaviour
         return value;
     }
 
+    public static void DebugTime()
+    {
+        Debug.Log("React: " + debugReactTime);
+        Debug.Log("Break: " + debugBreakTime);
+    }
 
 }

@@ -12,6 +12,9 @@ public class BackgroundCreatorScript : MonoBehaviour
     
     private float timeTillObjectSpawn =2f;
 
+
+    private GameObject[] backgroundObjects;
+
     public GameObject[] items;
     public GameObject[] spawnableObjects;
     public GameObject barikade;
@@ -32,7 +35,11 @@ public class BackgroundCreatorScript : MonoBehaviour
 
     void Start()
     {
-        
+        object[] bg = Resources.LoadAll("Prefabs/Background Objects", typeof(GameObject)); ;
+
+
+        Debug.Log("Loaded" + bg.Length);
+        //int n = (int)Random.Range(0, itemList.Length - 0.1f);
     }
 
 
@@ -46,11 +53,6 @@ public class BackgroundCreatorScript : MonoBehaviour
         {
             SpawnObject();
         }
-
-
-
-
-        Debug.Log(Tracker.totalDamage);
 
 
 
@@ -164,13 +166,15 @@ public class BackgroundCreatorScript : MonoBehaviour
     {
         return 2;
     }
-
+    
 
     public void EncounterAnimalName()
     {
-        GameObject[] itemList = Resources.LoadAll<GameObject>("items"); //textures = Resources.LoadAll("Art/Animals/Encounters", typeof(Sprite));
+        object[] textures = Resources.LoadAll("Art/Animals/Encounters", typeof(Sprite));
 
-        int n = (int)Random.Range(0, itemList.Length - 0.1f);
+        int n = (int)Random.Range(0, textures.Length - 0.1f);
+        Sprite s = (Sprite)textures[n];
+
 
     }
 

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BackgroundObject : MonoBehaviour
 {
-    public float size;
-
-
-
     // Update is called once per frame
     void Update()
     {

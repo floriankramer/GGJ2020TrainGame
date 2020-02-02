@@ -51,8 +51,10 @@ public class Train : MonoBehaviour
                     parts[p.partType].Remove(p);
                     numParts -= 1;
                     if (parts[p.partType].Count == 0) {
+                        Debug.Log("Defeat by caregory");
                         Defeat();
                     } else if ((numParts + 0.0) / numPartsInit < PercentPartsDefeat) {
+                        Debug.Log("Defeat by num parts");
                         Defeat();
                     }
                 });

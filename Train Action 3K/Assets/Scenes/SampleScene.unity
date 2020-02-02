@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 109423465}
   - component: {fileID: 109423464}
   - component: {fileID: 109423463}
+  - component: {fileID: 109423466}
   m_Layer: 0
   m_Name: gradient_dark_directional_RIGHT
   m_TagString: Untagged
@@ -212,6 +213,19 @@ Transform:
   m_Father: {fileID: 1241168065}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &109423466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109423462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860f3e0dc64feec49bab645d082d429c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenEdge: 1
 --- !u!1 &138619770
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +237,7 @@ GameObject:
   - component: {fileID: 138619773}
   - component: {fileID: 138619772}
   - component: {fileID: 138619771}
+  - component: {fileID: 138619774}
   m_Layer: 0
   m_Name: gradient_dark_directional (2)_BOTTOM
   m_TagString: Untagged
@@ -306,6 +321,19 @@ Transform:
   m_Father: {fileID: 1241168065}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138619774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138619770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860f3e0dc64feec49bab645d082d429c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenEdge: 3
 --- !u!1 &148748336
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +411,7 @@ GameObject:
   - component: {fileID: 257180423}
   - component: {fileID: 257180422}
   - component: {fileID: 257180421}
+  - component: {fileID: 257180424}
   m_Layer: 0
   m_Name: gradient_dark_directional (1)_LIGHT
   m_TagString: Untagged
@@ -466,6 +495,19 @@ Transform:
   m_Father: {fileID: 1241168065}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257180424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257180420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860f3e0dc64feec49bab645d082d429c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenEdge: 0
 --- !u!1001 &269382429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1076,6 +1118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Train
+      objectReference: {fileID: 0}
+    - target: {fileID: 6822657312411585377, guid: e2b40415bc944d04d95c435087946f93,
+        type: 3}
+      propertyPath: PercentPartsDefeat
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b40415bc944d04d95c435087946f93, type: 3}

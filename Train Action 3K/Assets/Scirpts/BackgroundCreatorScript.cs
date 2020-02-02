@@ -13,7 +13,7 @@ public class BackgroundCreatorScript : MonoBehaviour
     private float timeTillObjectSpawn =2f;
 
 
-    private GameObject[] backgroundObjects;
+    public GameObject[] backgroundObjects;
 
     public GameObject[] items;
     public GameObject[] spawnableObjects;
@@ -30,17 +30,6 @@ public class BackgroundCreatorScript : MonoBehaviour
     private float minObjectYValue = -1;
     private float maxObjectYValue = 1.8f;
 
-
-
-
-    void Start()
-    {
-        object[] bg = Resources.LoadAll("Prefabs/Background Objects", typeof(GameObject)); ;
-
-
-        Debug.Log("Loaded" + bg.Length);
-        //int n = (int)Random.Range(0, itemList.Length - 0.1f);
-    }
 
 
     // Update is called once per frame

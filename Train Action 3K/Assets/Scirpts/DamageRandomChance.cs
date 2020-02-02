@@ -24,7 +24,7 @@ public class DamageRandomChance : MonoBehaviour
 
             if (Random.Range(0.0f, 100.0f) <= probabilityPerTick)
             {
-                Part randomPart = GetRandomPart();
+                Part randomPart = GetComponent<Part>();
                 if(randomPart != null)
                 {
                     float damage = Random.Range(damageMin, damageMax);

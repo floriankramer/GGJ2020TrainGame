@@ -26,8 +26,8 @@ public class Spawner : MonoBehaviour
     private float spawnDistanceForeground;
 
     // Minimal and Maximal Distance that can between two Background Objects 
-    private float minForegroundObjectDistance = 4f;
-    private float maxForegroundObjectDistance = 16f;
+    private float minForegroundObjectDistance = 6f;
+    private float maxForegroundObjectDistance = 20f;
 
     // Values for the Spawning on the Y-Axis
     private float minForegroundObjectYValue = -5.9f;
@@ -135,6 +135,7 @@ public class Spawner : MonoBehaviour
         {
             timeTillObjectSpawn += breakTime + (difficulty*0.1f);
             Tracker.timeSinceBreak = 0;
+            Debug.Log("Break");
             return;
         }
 
@@ -145,6 +146,7 @@ public class Spawner : MonoBehaviour
         {
             timeTillObjectSpawn = 2* breakTime + (difficulty * 0.1f);
             Tracker.timeSinceBreak = 0;
+            Debug.Log("Break");
             return;
         }
 
@@ -153,6 +155,7 @@ public class Spawner : MonoBehaviour
         {
             timeTillObjectSpawn = breakTime + (difficulty * 0.1f);
             Tracker.timeSinceBreak = 0;
+            Debug.Log("Break");
             return;
         }
 
@@ -170,6 +173,7 @@ public class Spawner : MonoBehaviour
             Vector3 coordinates = new Vector3(Camera.main.transform.position.x +20, -3.85f);
             Instantiate(barikade, coordinates , Quaternion.identity);
             timeTillObjectSpawn = reactionTime + (difficulty * 0.1f);
+            Debug.Log("Barikade");
             return;
         }
 
@@ -181,6 +185,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnRandomItem()
     {
+        Debug.Log("Item");
         int n = (int)Random.Range(0, items.Length - 0.1f);
         Instantiate(items[n], new Vector3(Camera.main.transform.position.x + Camera.main.orthographicSize*Camera.main.aspect*1.2f, GetItemYSpawnpoint()), Quaternion.identity);
     }

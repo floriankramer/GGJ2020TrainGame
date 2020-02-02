@@ -31,7 +31,7 @@ public class FlameThrower : MonoBehaviour
             }
 
             Vector3 RaycastSrc = new Vector3(transform.position.x, transform.position.y - 1.5f, transform.position.z);
-            RaycastHit2D[] hits = Physics2D.RaycastAll(RaycastSrc, new Vector2(1, 0), 5);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(RaycastSrc, new Vector2(1, 0), 8);
             foreach (RaycastHit2D hit in hits)
             {
                 if (hit.collider.gameObject.GetComponent<Barricade>() != null)

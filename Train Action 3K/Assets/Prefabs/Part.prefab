@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8346e583e64bcc747a2681b41ce11ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 1
+  damagePerSecond: 0.25
 --- !u!198 &7394547463034895325
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4901,9 +4901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickSeconds: 1
-  probabilityPerTick: 7
+  probabilityPerTick: 5
   damageMin: 5
-  damageMax: 15
+  damageMax: 25
 --- !u!61 &2549041237200732156
 BoxCollider2D:
   m_ObjectHideFlags: 0

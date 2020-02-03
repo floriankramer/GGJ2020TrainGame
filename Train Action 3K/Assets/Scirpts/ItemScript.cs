@@ -42,7 +42,14 @@ public class ItemScript : MonoBehaviour
             // Move it with the Mouse
             transform.position = GetWorldPositionFromMouse();
 
+            // Find objects we might repair
             Collider2D[] hits = Physics2D.OverlapPointAll(GetWorldPositionFromMouse());
+            // Ensure we always try to repair the closest object first.
+            System.Array.Sort(hits, (a, b) => {
+                float la = (a.gameObject.transform.position - gameObject.transform.position).magnitude;
+                float lb = (a.gameObject.transform.position - gameObject.transform.position).magnitude;
+                return  la == lb ? 0 : (la < lb ? -1 : 1);
+            });
 
             bool foundPart = false;
             bool foundPartButCantRepair = false;

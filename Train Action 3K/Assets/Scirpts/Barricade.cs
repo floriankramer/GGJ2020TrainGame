@@ -33,13 +33,21 @@ public class Barricade : MonoBehaviour
             if(parts.Length > 0)
             {
                 System.Array.Sort(parts, CompareObjDistance);
+                int lastLivingPart = 0;
+                for (int i = parts.Length - 1; i >= 0; i--) {
+                    if (parts[i].Health > 0) {
+                        lastLivingPart = i; 
+                    }
+                }
                 for(int i = 0; i < parts.Length; i++)
                 {
-                    if(Random.Range(0.0f, 100.0f) < damagePropagationProbability)
-                    {
-                        parts[i].Health -= damage;
-                        Destroy(gameObject);
-                        break;
+                    if (parts[i].Health > 0) {
+                        if(Random.Range(0.0f, 100.0f) < damagePropagationProbability || i == lastLivingPart)
+                        {
+                            parts[i].Health -= damage;
+                            Destroy(gameObject);
+                            break;
+                        }
                     }
                 }
             }

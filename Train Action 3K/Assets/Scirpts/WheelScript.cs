@@ -16,9 +16,23 @@ public class WheelScript : MonoBehaviour
 
     void onDeath()
     {
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+        ParticleSystem.MainModule module = ps.main;
+
         isAlive = false;
-        if(killOnDestroy)
+        if (killOnDestroy)
+        {
             gameObject.GetComponent<Collider2D>().transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        else
+        {
+            if(ps != null)
+            {
+                module.loop = true;
+                ps.Play();
+            }
+        }
+
     }
 
     // Update is called once per frame
